@@ -17,13 +17,16 @@ export default function Home() {
       <div>
         {categoryName.map((category) => (
           <div key={category}>
-            <h2 className="text-2xl capitalize">{category}</h2>
-            {productInfo
-              .filter((p) => p.category === category)
-              .map((product) => (
-                // <div key={product._id}>{product.name}</div>
-                <Product key={product._id} {...product} />
-              ))}
+            <h2 className="text-2xl py-5 capitalize">{category}</h2>
+            <div className="flex -mx-5 overflow-x-scroll snap-x scrollbar-hide">
+              {productInfo
+                .filter((p) => p.category === category)
+                .map((product) => (
+                  <div key={product._id} className="px-5 snap-start">
+                    <Product {...product} />
+                  </div>
+                ))}
+            </div>
           </div>
         ))}
 
