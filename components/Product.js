@@ -1,21 +1,19 @@
 import Image from "next/image";
-import { styled } from "styled-components";
-export default function Product({ name, description, price, image }) {
-  // console.log(price);
-  const StyledImage = styled(Image)`
-    object-fit: cover;
-    width: 100%;
-  `;
+
+export default function Product({ name, description, price, image, category }) {
   return (
     <div className="w-64">
-      <div className="bg-gray-100 p-5 rounded-xl">
-        <StyledImage
-          src={image}
-          width={200}
-          height={300}
-          objectFit="cover"
-          alt="Rabbit"
-        />
+      <div className=" p-5 rounded-xl">
+        <div className="w-64 h-96">
+          <Image
+            src={image}
+            width={200}
+            height={200}
+            objectFit="cover"
+            alt={name}
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
       <div className="mt-2">
         <h3 className="font-bold text-lg">{name}</h3>
