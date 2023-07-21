@@ -10,13 +10,13 @@ const AboutPage = () => {
       <p className="mb-4">
         <span id="W_Name2">Painted Palette</span> is a Professional{" "}
         <span id="W_Type1">eCommerce</span> Platform. Here we will provide you
-        only interesting content, which you will like very much. We're dedicated
-        to providing you the best of <span id="W_Type2">eCommerce</span>, with a
-        focus on dependability and <span id="W_Spec">Arts Selling</span>. We're
-        working to turn our passion for <span id="W_Type3">eCommerce</span> into
-        a booming online website. We hope you enjoy our{" "}
-        <span id="W_Type4">eCommerce</span> as much as we enjoy offering them to
-        you.
+        only interesting content, which you will like very much. We are
+        dedicated to providing you the best of{" "}
+        <span id="W_Type2">eCommerce</span>, with a focus on dependability and{" "}
+        <span id="W_Spec">Arts Selling</span>. We are working to turn our
+        passion for <span id="W_Type3">eCommerce</span> into a booming online
+        website. We hope you enjoy our <span id="W_Type4">eCommerce</span> as
+        much as we enjoy offering them to you.
       </p>
       <p className="mb-4">
         I will keep posting more important posts on my Website for all of you.
