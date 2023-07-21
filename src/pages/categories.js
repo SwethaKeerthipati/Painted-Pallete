@@ -1,20 +1,19 @@
 import dbConnect from "../../db/connect";
 
-export default async function handler(req, response) {
-  try {
-    // Establish a connection to the MongoDB database
-    const { db } = await dbConnect();
+// export default async function handler(req, response) {
+//   try {
+//     const { db } = await dbConnect();
+//     const categories = await db.collection("categories").find({}).toArray();
+//     response.status(200).json(categories);
+//   } catch (err) {
+//     console.error(err);
+//     response.status(500).json({ message: "Internal Server Error" });
+//   }
+// }
 
-    // Fetch categories from the "categories" collection
-    const categories = await db.collection("categories").find({}).toArray();
+const CategoriesPage = () => {
+  // Your page content here
+  return <div>Categories Page</div>;
+};
 
-    // Return the categories as a JSON response with status code 200
-    response.status(200).json(categories);
-  } catch (err) {
-    // Log any errors that occur during data fetching
-    console.error(err);
-
-    // Return an error JSON response with status code 500
-    response.status(500).json({ message: "Internal Server Error" });
-  }
-}
+export default CategoriesPage;
