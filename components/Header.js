@@ -1,26 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Search from "./Search";
 
 export default function Header({ onSearchChange }) {
-  const [search, setSearch] = useState("");
-
-  const handleInputChange = (e) => {
-    setSearch(e.target.value);
-    onSearchChange(e.target.value);
-  };
-
   return (
-    <header className="p-5 flex justify-between items-center">
+    <header className="p-1 flex justify-between items-center">
       <div className="flex items-center">
         <Image
           src="/products/pp-logo.png"
           alt="Logo"
           width={200}
           height={200}
-          className="h-14 w-14"
+          className="h-100 w-14"
         />
-        <div className="p-5 flex-grow ">
+        <Search onSearchChange={onSearchChange} />
+        {/* <div className="p-5">
           <input
             type="text"
             placeholder="Search for Paintings"
@@ -28,7 +23,7 @@ export default function Header({ onSearchChange }) {
             value={search}
             onChange={handleInputChange}
           />
-        </div>
+        </div> */}
       </div>
       <div className="flex items-center space-x-5">
         <Link href="/about" legacyBehavior>

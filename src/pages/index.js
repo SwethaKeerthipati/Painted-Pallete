@@ -57,23 +57,14 @@ export default function Home() {
   return (
     <div>
       <Header onSearchChange={handleSearchChange} />
-      {/* <div className="p-5">
-        <input
-          type="text"
-          placeholder="Search for Paintings"
-          className="bg-gray-100 w-full py-2 px-4 rounded-xl "
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div> */}
       <div>
         <div className="flex mb-5">
           {categoryName.map((category) => (
-            <div key={category} className="mr-6 p-4 ">
+            <div key={category} className="mr-6 p-2 ">
               <h2
-                className={`py-2 px-6 bg-pink-500 text-white rounded-2xl hover:bg-blue-400 hover:text-white transition-all cursor-pointer ease-in-out duration-200 shadow ${
+                className={`" py-2 px-6 bg-white text-center rounded hover-bg-blue-900 hover:text-white transition-all cursor-pointer ease-in-out duration-200 shadow " ${
                   matchedCategory.toLowerCase() === category.toLowerCase()
-                    ? "underline"
+                    ? "active-category"
                     : ""
                 }`}
                 onClick={() => handleCategoryClick(category.toLowerCase())}
@@ -84,15 +75,23 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="flex -mx-5 overflow-x-scroll snap-x scrollbar-hide">
-          {filteredProducts.map((product) => (
-            <div key={product._id} className="px-5 snap-start">
-              <Product {...product} />
-              {matchedCategory.toLowerCase() === "all" && (
-                <p className="text-sm">Category: {product.category}</p>
-              )}
-            </div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <div key={product._id} className="px-5">
+                <Product {...product} />
+                {matchedCategory.toLowerCase() === "all" && (
+                  <p className="text-sm"></p>
+                )}
+              </div>
+            ))
+          ) : filteredProducts.length === 0 ? (
+            <p className="text-center w-full mt-10 text-lg">
+              No Paintings found.
+            </p>
+          ) : (
+            <p className="text-xs text-gray-500 text-center py-4">Loading...</p>
+          )}
         </div>
       </div>
     </div>

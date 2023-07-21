@@ -2,12 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap");
+/* @layer utilities {
+  .active-category {
+    @apply bg-blue-900 text-white;
+  }
+} */
 
-/* Custom tailwind class */
 @layer components {
   .link {
-    @apply cursor-pointer  hover:text-blue-light active:text-blue-light;
+    @apply cursor-pointer hover:text-blue-900 active:text-blue-900;
   }
+}
+
+@layer utilities {
+  .active-category {
+    background-color: rgba(10, 129, 171, var(--tw-bg-opacity));
+    color: white;
+    /* Add any other styles to indicate the active category */
+  }
+}
+
+@layer utilities {
+  .hover-bg-blue-900:hover {
+    background-color: rgba(10, 129, 171, 1);
+  }
+}
+
+.border-2mm {
+  border-width: 2mm;
+}
+
+.border-ridge {
+  border-style: ridge;
+}
+
+.border-black-300 {
+  border-color: rgba(7, 5, 7, 0.9);
 }
