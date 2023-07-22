@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useSWR from "swr";
 import Header from "../../components/Header";
 import Product from "../../components/Product";
+import Banner from "../../components/Banner";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -10,7 +11,7 @@ export default function Home() {
   const fetcher = (url) => fetch(url).then((response) => response.json());
 
   const { data: productInfo, error } = useSWR("/api/products", fetcher);
-
+  // console.log(productInfo);
   if (error) {
     return <div>Error loading data</div>;
   }
@@ -57,8 +58,9 @@ export default function Home() {
   return (
     <div>
       <Header onSearchChange={handleSearchChange} />
+      <Banner />
       <div>
-        <div className="flex mb-5">
+        <div className=" flex mb-5">
           {categoryName.map((category) => (
             <div key={category} className="mr-6 p-2 ">
               <h2
@@ -86,9 +88,7 @@ export default function Home() {
               </div>
             ))
           ) : filteredProducts.length === 0 ? (
-            <p className="text-center w-full mt-10 text-lg">
-              No Paintings found.
-            </p>
+            <p className="text-center text-lg">No Paintings found.</p>
           ) : (
             <p className="text-xs text-gray-500 text-center py-4">Loading...</p>
           )}

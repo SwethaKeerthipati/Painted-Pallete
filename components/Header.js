@@ -5,17 +5,22 @@ import Search from "./Search";
 
 export default function Header({ onSearchChange }) {
   return (
-    <header className="p-1 flex justify-between items-center">
-      <div className="flex items-center">
-        <Image
-          src="/products/pp-logo.png"
-          alt="Logo"
-          width={200}
-          height={200}
-          className="h-100 w-14"
-        />
-        <Search onSearchChange={onSearchChange} />
-        {/* <div className="p-5">
+    <div className="sticky-header">
+      <header className="p-1 flex justify-between items-center">
+        <div className="flex items-center">
+          <Link href="/" legacyBehavior>
+            <a href="#top">
+              <Image
+                src="/products/pp-logo.png"
+                alt="Logo"
+                width={200}
+                height={200}
+                className="h-100 w-14"
+              />
+            </a>
+          </Link>
+          <Search onSearchChange={onSearchChange} />
+          {/* <div className="p-5">
           <input
             type="text"
             placeholder="Search for Paintings"
@@ -24,18 +29,19 @@ export default function Header({ onSearchChange }) {
             onChange={handleInputChange}
           />
         </div> */}
-      </div>
-      <div className="flex items-center space-x-5">
-        <Link href="/about" legacyBehavior>
-          <a className="text-blue-600">About</a>
-        </Link>
-        <Link href="/shop" legacyBehavior>
-          <a className="text-blue-600">Shop</a>
-        </Link>
-        <Link href="/login" legacyBehavior>
-          <a className="text-blue-600">Login</a>
-        </Link>
-      </div>
-    </header>
+        </div>
+        <div className="flex items-center space-x-5">
+          <Link href="/about" legacyBehavior>
+            <a className="text-blue-600">About</a>
+          </Link>
+          <Link href="/shop" legacyBehavior>
+            <a className="text-blue-600">Shop</a>
+          </Link>
+          <Link href="/login" legacyBehavior>
+            <a className="text-blue-600">Login</a>
+          </Link>
+        </div>
+      </header>
+    </div>
   );
 }

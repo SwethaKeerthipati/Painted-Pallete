@@ -10,6 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    animation: {
+      "fade-in": "fadeIn 1s ease-in",
+    },
   },
+  variants: {},
   plugins: [require("tailwind-scrollbar-hide")],
 };
