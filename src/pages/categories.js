@@ -1,13 +1,13 @@
 import dbConnect from "../../db/connect";
 
-export default async function handler(req, response) {
+export default async function handler(req, res) {
   try {
     const { db } = await dbConnect();
     const categories = await db.collection("categories").find({}).toArray();
-    response.status(200).json(categories);
+    res.status(200).json(categories);
   } catch (err) {
     console.error(err);
-    response.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
 
