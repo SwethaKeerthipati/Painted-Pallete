@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-konva": "^18.2.10",
     "react-multi-carousel": "^2.8.4",
+    "react-reveal": "^1.2.2",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.0.4",
