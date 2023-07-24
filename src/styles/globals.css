@@ -8,11 +8,11 @@
   }
 } */
 
-@layer components {
+/* @layer components {
   .link {
     @apply cursor-pointer hover:text-blue-900 active:text-blue-900;
   }
-}
+} */
 
 @layer utilities {
   .active-category {
@@ -45,4 +45,11 @@
   top: 0;
   z-index: 999;
   background-color: white;
+}
+
+.glassmorphism {
+  background-color: white;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }

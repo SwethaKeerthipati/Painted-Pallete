@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import useSWR from "swr";
 import Header from "../../components/Header";
 import Product from "../../components/Product";
-import Banner from "../../components/Banner";
+// import Banner from "../../components/Banner";
+// import Navbar from "../../components/Navbar";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -18,7 +19,7 @@ export default function Home() {
 
   const allProducts = productInfo || [];
 
-  const categoryName = ["All", "Cute", "Mandala", "Nature", "Pencil"];
+  const categoryName = ["All", "Nature", "Mandala", "Cute", "Pencil", "Random"];
 
   const getRandomProducts = () => {
     const filteredProducts = allProducts.filter((product) =>
@@ -58,7 +59,6 @@ export default function Home() {
   return (
     <div>
       <Header onSearchChange={handleSearchChange} />
-      <Banner />
       <div>
         <div className=" flex mb-5">
           {categoryName.map((category) => (
@@ -78,20 +78,24 @@ export default function Home() {
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
-              <div key={product._id} className="px-5">
-                <Product {...product} />
-                {matchedCategory.toLowerCase() === "all" && (
-                  <p className="text-sm"></p>
-                )}
-              </div>
-            ))
-          ) : filteredProducts.length === 0 ? (
-            <p className="text-center text-lg">No Paintings found.</p>
+          {productInfo ? (
+            filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <div key={product._id} className="px-5">
+                  <Product {...product} />
+                  {matchedCategory.toLowerCase() === "all" && (
+                    <p className="text-sm"></p>
+                  )}
+                </div>
+              ))
+            ) : (
+              <p className="text-center text-lg">No Paintings found😒</p>
+            )
           ) : (
             <p className="text-xs text-gray-500 text-center py-4">Loading...</p>
           )}
+          {/* 
+          <Navbar /> */}
         </div>
       </div>
     </div>

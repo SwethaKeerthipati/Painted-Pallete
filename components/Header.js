@@ -6,8 +6,8 @@ import Search from "./Search";
 export default function Header({ onSearchChange }) {
   return (
     <div className="sticky-header">
-      <header className="p-1 flex justify-between items-center">
-        <div className="flex items-center">
+      <header className="flex items-center justify-between p-1">
+        <div className="flex items-center flex-grow gap-4">
           <Link href="/" legacyBehavior>
             <a href="#top">
               <Image
@@ -19,27 +19,22 @@ export default function Header({ onSearchChange }) {
               />
             </a>
           </Link>
-          <Search onSearchChange={onSearchChange} />
-          {/* <div className="p-5">
-          <input
-            type="text"
-            placeholder="Search for Paintings"
-            className="bg-gray-100 w-full py-2 px-4 rounded-xl "
-            value={search}
-            onChange={handleInputChange}
-          />
-        </div> */}
-        </div>
-        <div className="flex items-center space-x-5">
-          <Link href="/about" legacyBehavior>
-            <a className="text-blue-600">About</a>
-          </Link>
-          <Link href="/shop" legacyBehavior>
-            <a className="text-blue-600">Shop</a>
-          </Link>
-          <Link href="/login" legacyBehavior>
-            <a className="text-blue-600">Login</a>
-          </Link>
+          <div className="flex-grow items-center gap-4">
+            <div className="w-70">
+              <Search onSearchChange={onSearchChange} />
+            </div>
+          </div>
+          <div className="flex space-x-5 ml-auto">
+            <Link href="/about" legacyBehavior>
+              <a className="text-blue-600">About</a>
+            </Link>
+            <Link href="/shop" legacyBehavior>
+              <a className="text-blue-600">Shop</a>
+            </Link>
+            <Link href="/login" legacyBehavior>
+              <a className="text-blue-600">Login</a>
+            </Link>
+          </div>
         </div>
       </header>
     </div>

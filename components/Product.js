@@ -1,41 +1,36 @@
+import React from "react";
 import Image from "next/image";
-// import Fade from "react-reveal/Fade";
+import Link from "next/link";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
-export default function Product({ name, description, price, image, category }) {
+function Product({ name, price, description, category, image }) {
   return (
-    // <Fade left>
-    <div className="relative md:p-1 rounded-3xl">
-      {" "}
-      <p className="absolute top-2 right-3 text-xs italic text-gray-400 capitalize">
-        {category}
+    <div className="relative flex flex-col bg-white z-20 md:p-3 p-6 rounded-md shadow-lg">
+      <div className="w-50 h-80">
+        <Image
+          src={image}
+          width={200}
+          height={200}
+          objectFit="contain"
+          alt="name"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      <div className="mt-2">
+        <h3 className="font-bold text-lg px-3">{name}</h3>
+      </div>
+
+      <p className="text-xs mb-2 line-clamp-2 px-3 link">
+        <Link href={`/product-details`}>{description}</Link>
       </p>
-      <div className="rounded-3xl border-dashed ">
-        <div className="w-64">
-          <div className=" p-5 rounded-xl">
-            <div className="w-64 h-96 ">
-              <Image
-                src={image}
-                width={200}
-                height={200}
-                objectFit="cover"
-                alt={name}
-                className="w-full h-full object-cover rounded-2xl border-2mm border-ridge border-black-300"
-              />
-            </div>
-          </div>
-          <div className="mt-2">
-            <h3 className="font-bold text-lg">{name}</h3>
-          </div>
-          <p className="text-sm mt-2 leading-5">{description}</p>
-          <div className="flex mt-1 ">
-            <div className="text-2xl font-bold grow">€{price}</div>
-            <button className="bg-blue-400 text-white py-1 px-3 rounded-xl">
-              +
-            </button>
-          </div>
-        </div>
+      {/* <div className="text-2xl font-bold grow ">€{price}</div> */}
+      <div className="flex items-center">
+        <div className="text-2xl font-bold mr-4 px-3 flex-grow">€{price}</div>
+        <ShoppingBasketIcon className="text-2xl "></ShoppingBasketIcon>
       </div>
     </div>
-    // </Fade>
   );
 }
+
+export default Product;
