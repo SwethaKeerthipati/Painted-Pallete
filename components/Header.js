@@ -15,7 +15,7 @@ export default function Header({ onSearchChange }) {
                 alt="Logo"
                 width={200}
                 height={200}
-                className="h-100 w-14"
+                className="h-700 w-20"
               />
             </a>
           </Link>

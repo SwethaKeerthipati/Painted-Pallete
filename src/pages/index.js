@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import useSWR from "swr";
 import Header from "../../components/Header";
 import Product from "../../components/Product";
-// import Banner from "../../components/Banner";
-// import Navbar from "../../components/Navbar";
+import Link from "next/link";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -12,7 +11,7 @@ export default function Home() {
   const fetcher = (url) => fetch(url).then((response) => response.json());
 
   const { data: productInfo, error } = useSWR("/api/products", fetcher);
-  // console.log(productInfo);
+
   if (error) {
     return <div>Error loading data</div>;
   }
@@ -82,7 +81,21 @@ export default function Home() {
             filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
                 <div key={product._id} className="px-5">
-                  <Product {...product} />
+                  <Link
+                    href={`/products/${product._id}`}
+                    key={product._id}
+                    passHref
+                  >
+                    <Product
+                      id={product._id}
+                      name={product.name}
+                      price={product.price}
+                      description={product.description}
+                      category={product.category}
+                      image={product.image}
+                    />
+                  </Link>
+                  {/* <Product key={product.id} {...product} /> */}
                   {matchedCategory.toLowerCase() === "all" && (
                     <p className="text-sm"></p>
                   )}
