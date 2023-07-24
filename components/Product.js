@@ -6,7 +6,7 @@ import Fade from "react-reveal/Fade";
 
 function Product({ name, price, description, category, image }) {
   return (
-    <Fade right>
+    <Fade bottom>
       <div className="relative flex flex-col bg-white z-20 md:p-3 p-6 rounded-md shadow-lg">
         <div className="w-50 h-80">
           <Image
