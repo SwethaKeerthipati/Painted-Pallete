@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 /* @layer utilities {
   .active-category {
     @apply bg-blue-900 text-white;
@@ -23,18 +29,24 @@
 }
 
 @layer utilities {
-  .hover-bg-blue-900:hover {
+  .border-ridge {
+    border: 2mm ridge rgba(10, 129, 171, 0.6);
+  }
+}
+@layer utilities {
+  .hover-bg-blue-900:hover,
+  .bg-blue-500 {
     background-color: rgba(10, 129, 171, 1);
   }
 }
 
-.border-2mm {
+/* .border-2mm {
   border-width: 2mm;
 }
 
 .border-ridge {
   border-style: ridge;
-}
+} */
 
 .border-black-300 {
   border-color: rgba(7, 5, 7, 0.9);

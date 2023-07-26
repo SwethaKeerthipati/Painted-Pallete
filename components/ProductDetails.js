@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function ProductDetails({ name, description, price, image }) {
   return (
-    <div className="flex p-6">
+    <div className="flex flex-row items-center p-6">
       <div className="w-1/2 pr-4">
         <Image
           src={image}
@@ -11,6 +11,7 @@ export default function ProductDetails({ name, description, price, image }) {
           height={400}
           objectFit="contain"
           alt={name}
+          className="w-90 h-90 objectFit-cover border-ridge"
         />
       </div>
       <div className="w-1/2">

@@ -3,6 +3,8 @@ import useSWR from "swr";
 import Header from "../../components/Header";
 import Product from "../../components/Product";
 import Link from "next/link";
+import Component from "../../components/Login";
+import Footer from "../../components/Footer";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -57,7 +59,13 @@ export default function Home() {
 
   return (
     <div>
+      {/* <Header/>
+      <Hero/>
+      <Categories/>
+      <Footer/> */}
+
       <Header onSearchChange={handleSearchChange} />
+
       <div>
         <div className=" flex mb-5">
           {categoryName.map((category) => (
@@ -107,9 +115,8 @@ export default function Home() {
           ) : (
             <p className="text-xs text-gray-500 text-center py-4">Loading...</p>
           )}
-          {/* 
-          <Navbar /> */}
         </div>
+        <Footer />
       </div>
     </div>
   );
