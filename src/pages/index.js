@@ -59,11 +59,6 @@ export default function Home() {
 
   return (
     <div>
-      {/* <Header/>
-      <Hero/>
-      <Categories/>
-      <Footer/> */}
-
       <Header onSearchChange={handleSearchChange} />
 
       <div>
