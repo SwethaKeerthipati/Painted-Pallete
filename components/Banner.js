@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Image from "next/image";
 
 const artImages = [
   "https://images.unsplash.com/photo-1607211851821-8be3cd6146f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGFydHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60",
@@ -45,7 +46,7 @@ const Banner = () => {
         {artImages.map((image, index) => (
           <div key={index} className="flex">
             <div className="w-full pr-2">
-              <img
+              <Image
                 src={image}
                 alt={`Art ${index + 1}`}
                 className="w-full h-64 object-cover rounded-l-lg"

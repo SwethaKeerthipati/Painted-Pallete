@@ -28,9 +28,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/faq" className="text-gray-300 hover:text-white">
+                <Link href="/faq" className="text-gray-300 hover:text-white">
                   FAQ
-                </a>
+                </Link>
               </li>
               <li>
                 <Link
@@ -41,12 +41,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/termsofservice"
                   className="text-gray-300 hover:text-white"
                 >
                   Terms of Service
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -55,22 +55,22 @@ const Footer = () => {
             <ul>
               <li></li>
               <li>
-                <a
+                <Link
                   href="https://twitter.com/Swetha9692"
                   target="_blank"
                   className="text-gray-300 hover:text-white"
                 >
                   <TwitterIcon />
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="https://instagram.com/swethakeerthipati"
                   target="_blank"
                   className="text-gray-300 hover:text-white"
                 >
                   <InstagramIcon />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
