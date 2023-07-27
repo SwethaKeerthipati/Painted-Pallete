@@ -8,10 +8,12 @@ export const authOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
+      secret: process.env.SECRET,
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      secret: process.env.SECRET,
     }),
     // ...add more providers here
   ],

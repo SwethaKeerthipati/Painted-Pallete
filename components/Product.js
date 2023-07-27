@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-// import Fade from "react-reveal/Fade";
+// import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function Product({ id, name, price, description, category, image }) {
   return (

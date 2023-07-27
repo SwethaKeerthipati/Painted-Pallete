@@ -1,88 +1,218 @@
+// import React from "react";
+// import Link from "next/link";
+// import InstagramIcon from "@mui/icons-material/Instagram";
+// import TwitterIcon from "@mui/icons-material/Twitter";
+// import { Twitter } from "@mui/icons-material";
+// const Footer = () => {
+//   return (
+//     <footer className="bg-gray-800 py-8">
+//       <div className="container mx-auto px-4">
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+//           <div className="text-white">
+//             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+//             <p>Email: swethakeerthipati@gmail.com</p>
+//             <p>Phone: +1 (123) 456-7890</p>
+//             <p>Address: Berlin,Germany</p>
+//           </div>
+//           <div className="text-white">
+//             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+//             <ul>
+//               <li>
+//                 <Link href="/" className="text-gray-300 hover:text-white">
+//                   Home
+//                 </Link>
+//               </li>
+//               <li>
+//                 <a href="/products" className="text-gray-300 hover:text-white">
+//                   Products
+//                 </a>
+//               </li>
+//               <li>
+//                 <Link href="/faq" className="text-gray-300 hover:text-white">
+//                   FAQ
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/privacyPolicy"
+//                   className="text-gray-300 hover:text-white"
+//                 >
+//                   Privacy Policy
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/termsofservice"
+//                   className="text-gray-300 hover:text-white"
+//                 >
+//                   Terms of Service
+//                 </Link>
+//               </li>
+//             </ul>
+//           </div>
+//           <div className="text-white">
+//             <h3 className="text-xl font-bold mb-4">Follow Us</h3>
+//             <ul>
+//               <li></li>
+//               <li>
+//                 <Link
+//                   href="https://twitter.com/Swetha9692"
+//                   target="_blank"
+//                   className="text-gray-300 hover:text-white"
+//                 >
+//                   <TwitterIcon />
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="https://instagram.com/swethakeerthipati"
+//                   target="_blank"
+//                   className="text-gray-300 hover:text-white"
+//                 >
+//                   <InstagramIcon />
+//                 </Link>
+//               </li>
+//             </ul>
+//           </div>
+//         </div>
+//         <div className="mt-4 text-center text-gray-300">
+//           <p>
+//             &copy; {new Date().getFullYear()} Painted Pallete. All rights
+//             reserved.
+//           </p>
+//         </div>
+//       </div>
+//     </footer>
+//   );
+// };
+
+// export default Footer;
+
 import React from "react";
+import { FaLocationArrow, FaMobileAlt, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import { Twitter } from "@mui/icons-material";
+
+const currentYear = new Date().getFullYear();
+
+const googleMapsLink = "https://www.google.com/maps?q=Berlin,Germany";
+const handleEmailClick = () => {
+  window.location.href = "mailto:swethakeerthipati@gmail.com";
+};
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 py-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="text-white">
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-            <p>Email: swethakeerthipati@gmail.com</p>
-            <p>Phone: +1 (123) 456-7890</p>
-            <p>Address: Berlin,Germany</p>
+    <div className="bg-gray-100 p-2 m-2">
+      <div className="container mx-auto py-8 px-4 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="col">
+            <div className="text-lg font-bold mb-4">About</div>
+            <div className="text-sm text-gray-600">
+              Painted Palette is your one-stop destination for beautiful and
+              unique artworks. We provide a platform for artists to showcase
+              their talent and sell their masterpieces to art enthusiasts
+              worldwide. Join us in celebrating creativity and supporting the
+              art community.
+            </div>
           </div>
-          <div className="text-white">
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-            <ul>
-              <li>
-                <Link href="/" className="text-gray-300 hover:text-white">
+          <div className="col">
+            <div className="text-lg font-bold mb-4">Contact</div>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center">
+                <FaLocationArrow className="text-gray-500 mr-2" />
+                <Link
+                  href={googleMapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="text-sm text-gray-600 hover:text-purple-600">
+                    Berlin, Germany
+                  </div>
+                </Link>
+              </div>
+              <div className="flex items-center">
+                <FaMobileAlt className="text-gray-500 mr-2" />
+                <div
+                  href="tel:1234567890"
+                  className="text-sm text-gray-600 hover:text-purple-600"
+                >
+                  Phone: +1 (123) 456-7890
+                </div>
+              </div>
+              <div className="flex items-center">
+                <FaEnvelope className="text-gray-500 mr-2" />
+                <div
+                  onClick={handleEmailClick}
+                  className="text-sm text-gray-600 hover:text-purple-600 underline"
+                >
+                  Email: swethakeerthipati@gmail.com
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="text-lg font-bold mb-4">Categories</div>
+            <div className="flex flex-col gap-2">
+              <span className="text-sm text-gray-600 cursor-pointer hover:text-purple-600">
+                Cute
+              </span>
+              <span className="text-sm text-gray-600 cursor-pointer hover:text-purple-600">
+                Acrylic
+              </span>
+              <span className="text-sm text-gray-600 cursor-pointer hover:text-purple-600">
+                Random
+              </span>
+              <span className="text-sm text-gray-600 cursor-pointer hover:text-purple-600">
+                Pencil
+              </span>
+              <span className="text-sm text-gray-600 cursor-pointer hover:text-purple-600">
+                Nature
+              </span>
+              <span className="text-sm text-gray-600 cursor-pointer hover:text-purple-600">
+                Mandala
+              </span>
+            </div>
+          </div>
+          <div className="col">
+            <div className="text-lg font-bold mb-4">Pages</div>
+            <div className="flex flex-col gap-2">
+              <Link href="/">
+                <div className="text-sm text-gray-600 hover:text-purple-600">
                   Home
-                </Link>
-              </li>
-              <li>
-                <a href="/products" className="text-gray-300 hover:text-white">
-                  Products
-                </a>
-              </li>
-              <li>
-                <Link href="/faq" className="text-gray-300 hover:text-white">
+                </div>
+              </Link>
+              <Link href="/faq">
+                <div className="text-sm text-gray-600 hover:text-purple-600">
                   FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacyPolicy"
-                  className="text-gray-300 hover:text-white"
-                >
+                </div>
+              </Link>
+              <Link href="/privacyPolicy">
+                <div className="text-sm text-gray-600 hover:text-purple-600">
                   Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/termsofservice"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
+                </div>
+              </Link>
+              <Link href="/returns">
+                <div className="text-sm text-gray-600 hover:text-purple-600">
+                  Returns
+                </div>
+              </Link>
+              <Link href="/termsofservice">
+                <div className="text-sm text-gray-600 hover:text-purple-600">
+                  Terms & Conditions
+                </div>
+              </Link>
+              <Link href="/contact-us">
+                <div className="text-sm text-gray-600 hover:text-purple-600">
+                  Contact Us
+                </div>
+              </Link>
+            </div>
           </div>
-          <div className="text-white">
-            <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-            <ul>
-              <li></li>
-              <li>
-                <Link
-                  href="https://twitter.com/Swetha9692"
-                  target="_blank"
-                  className="text-gray-300 hover:text-white"
-                >
-                  <TwitterIcon />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://instagram.com/swethakeerthipati"
-                  target="_blank"
-                  className="text-gray-300 hover:text-white"
-                >
-                  <InstagramIcon />
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="mt-4 text-center text-gray-300">
-          <p>
-            &copy; {new Date().getFullYear()} Painted Pallete. All rights
-            reserved.
-          </p>
         </div>
       </div>
-    </footer>
+      <div className="bg-gray-200 border-t border-gray-300 py-4 px-4 md:px-0 text-sm text-gray-600 text-center">
+        &copy; Painted Palette {currentYear}. All rights reserved.
+      </div>
+    </div>
   );
 };
 

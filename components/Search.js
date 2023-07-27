@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+// import { BsSearchHeartFill } from "react-icons/ai";
 
 const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState("");
@@ -10,23 +11,16 @@ const Search = ({ onSearchChange }) => {
   };
 
   return (
-    // <div className="p-5">
-    //   <input
-    //     type="text"
-    //     placeholder="Search for Paintings"
-    //     className="bg-gray-100 w-full py-2 px-4 rounded-xl"
-    //     value={search}
-    //     onChange={handleInputChange}
-    //   />
-    // </div>
-
-    <div className="flex items-center gap-4 bg-white px-2 py-1 rounded-lg">
+    <div className="relative flex rounded-md  items-center">
+      <div className="absolute inset-y-0 left-2.5 flex items-center">
+        <AiOutlineSearch className="w-4 text-gray-600" />
+      </div>
       <input
+        className="p-2 pl-10 h-full flex-grow flex-shrink outline-none cursor-pointer sm:text-base text-sm rounded-lg bg-gray-200"
         type="text"
         placeholder="Search..."
         value={search}
         onChange={handleInputChange}
-        className="bg-gray-100 py-2 px-4 rounded-xl text-[#222] "
       />
     </div>
   );
