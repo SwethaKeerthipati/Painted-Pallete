@@ -65,3 +65,20 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
+
+.cart-product {
+  border: 1px solid #e2e2e2;
+}
+
+.image-container {
+  width: 160px;
+  height: 160px;
+}
+
+.product-details {
+  flex: 1;
+}
+
+input[type="number"] {
+  width: 60px;
+}

@@ -4,9 +4,24 @@ import Image from "next/image";
 import Search from "./Search";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 export default function Header({ onSearchChange }) {
   const { data: session } = useSession();
+  const router = useRouter();
+
+  // Step 2: Use useSelector to get the cartItems from the Redux store
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
+  // Calculate the total cart count based on the quantity of each cart item
+  const cartCount = cartItems
+    ? cartItems.reduce((total, item) => total + item.quantity, 0)
+    : 0;
+
+  const handleCartClick = () => {
+    router.push("/cart");
+  };
 
   const handleSignIn = () => {
     signIn();
@@ -15,7 +30,6 @@ export default function Header({ onSearchChange }) {
   const handleSignOut = () => {
     signOut();
   };
-
   return (
     <header className="sticky-header w-full justify-center top-0 inset-x-0 z-30 bg-white text-gray-900 glassmorphism px-6 md:block">
       <div className="flex items-center w-full max-w-screen-xl py-2 xl:space-x-16 lg:space-x-12 space-x-7 mx-auto">
@@ -59,10 +73,10 @@ export default function Header({ onSearchChange }) {
             </li>
           </ul>
           <div className="flex items-center space-x-4">
-            <div className="relative">
+            <div onClick={handleCartClick} className="relative">
               <AiOutlineShoppingCart size={25} />
               <span className="absolute -top-3 -right-4 px-2 rounded-full bg-white text-[#222]">
-                0
+                {cartCount}
               </span>
             </div>
             {session ? (

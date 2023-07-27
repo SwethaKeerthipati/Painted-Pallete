@@ -3,10 +3,10 @@ import useSWR from "swr";
 import Header from "../../components/Header";
 import Product from "../../components/Product";
 import Link from "next/link";
-import Component from "../../components/Login";
 import Footer from "../../components/Footer";
 import Banner from "../../components/Banner";
 import Newsletter from "../../components/NewsLetter";
+import Categories from "../../components/Categories";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -21,8 +21,6 @@ export default function Home() {
   }
 
   const allProducts = productInfo || [];
-
-  const categoryName = ["All", "Nature", "Mandala", "Cute", "Pencil", "Random"];
 
   const getRandomProducts = () => {
     const filteredProducts = allProducts.filter((product) =>
@@ -45,42 +43,25 @@ export default function Home() {
     setSearch(value);
   };
 
-  const handleCategoryClick = (category) => {
-    setMatchedCategory(category.toLowerCase());
-    setSearch("");
-  };
-
   const filteredProducts =
     matchedCategory.toLowerCase() === "all"
       ? getRandomProducts()
       : allProducts.filter(
           (product) =>
             product.category.toLowerCase() === matchedCategory.toLowerCase() &&
-            product.name.toLowerCase().includes(search.toLowerCase())
+            product.title.toLowerCase().includes(search.toLowerCase())
         );
 
   return (
     <div>
       <Header onSearchChange={handleSearchChange} />
       <Banner />
+      <Categories
+        categoryName={["All", "Nature", "Mandala", "Cute", "Pencil", "Random"]}
+        matchedCategory={matchedCategory}
+        setMatchedCategory={setMatchedCategory}
+      />
       <div>
-        <div className=" flex mb-5">
-          {categoryName.map((category) => (
-            <div key={category} className="mr-6 p-2 ">
-              <h2
-                className={`" py-2 px-6 bg-white text-center rounded hover-bg-blue-900 hover:text-white transition-all cursor-pointer ease-in-out duration-200 shadow " ${
-                  matchedCategory.toLowerCase() === category.toLowerCase()
-                    ? "active-category"
-                    : ""
-                }`}
-                onClick={() => handleCategoryClick(category.toLowerCase())}
-                style={{ cursor: "pointer" }}
-              >
-                {category}
-              </h2>
-            </div>
-          ))}
-        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4">
           {productInfo ? (
             filteredProducts.length > 0 ? (
@@ -100,7 +81,6 @@ export default function Home() {
                       image={product.image}
                     />
                   </Link>
-                  {/* <Product key={product.id} {...product} /> */}
                   {matchedCategory.toLowerCase() === "all" && (
                     <p className="text-sm"></p>
                   )}

@@ -15,7 +15,7 @@ function Product({ id, title, price, description, category, image }) {
             width={200}
             height={200}
             objectFit="contain"
-            alt={name}
+            alt={title}
             className="w-full h-full object-cover rounded-xl border-ridge cursor-pointer"
           />
         </div>
