@@ -26,7 +26,7 @@ export default function Home() {
 
   const getRandomProducts = () => {
     const filteredProducts = allProducts.filter((product) =>
-      product.name.toLowerCase().includes(search.toLowerCase())
+      product.title.toLowerCase().includes(search.toLowerCase())
     );
 
     const shuffledProducts = [...filteredProducts];

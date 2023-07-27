@@ -1,55 +1,55 @@
 [
   {
-    "name": "CuteBirds",
+    "title": "CuteBirds",
     "image": "/products/nature/CuteBirds.jpg",
     "price": 6,
     "category": "Nature",
     "description": "Delight in the charm of nature with our CuteBirds collection."
   },
   {
-    "name": "Peacock",
+    "title": "Peacock",
     "image": "/products/nature/Peacock.png",
     "price": 5,
     "category": "Nature",
     "description": "Behold the majestic beauty of the Peacock collection."
   },
   {
-    "name": "Peacock-Madhubani",
+    "title": "Peacock-Madhubani",
     "image": "/products/nature/Peacock-Madhubani.png",
     "price": 5,
     "category": "Nature",
     "description": "Experience art and nature with our Peacock-Madhubani collection."
   },
   {
-    "name": "Village",
+    "title": "Village",
     "image": "/products/nature/Village.jpg",
     "price": 10,
     "category": "Nature",
     "description": "Step into the tranquility of our Village collection."
   },
   {
-    "name": "VillageShore",
+    "title": "VillageShore",
     "image": "/products/nature/VillageShore.jpg",
     "price": 10,
     "category": "Nature",
     "description": "Unwind by the waterside with our VillageShore collection."
   },
   {
-    "name": "Birdsnest",
+    "title": "Birdsnest",
     "image": "/products/nature/BirdsNest.jpg",
     "price": 8,
     "category": "Nature",
     "description": "Discover the essence of comfort and care with our Birdsnest collection."
   },
   {
-    "name": "Birds",
+    "title": "Birds",
     "image": "/products/nature/Birds.jpg",
     "price": 5,
     "category": "Nature",
     "description": "Delight in the freedom and grace of our Birds collection."
   },
   {
-    "name": "AncientVillage",
+    "title": "AncientVillage",
     "image": "/products/nature/AncientVillage.jpg",
     "price": 10,
     "category": "Nature",
@@ -57,343 +57,343 @@
   },
 
   {
-    "name": "Bird-House",
+    "title": "Bird-House",
     "image": "/products/cute/Bird -House.jpg",
     "price": 10,
     "category": "Cute",
     "description": "A charming little birdhouse, the perfect home for feathered friends."
   },
   {
-    "name": "Cute-Elephant",
+    "title": "Cute-Elephant",
     "image": "/products/cute/Cute-Elephant.jpg",
     "price": 8,
     "category": "Cute",
     "description": "An adorable baby elephant with a cute and playful demeanor."
   },
   {
-    "name": "Kitty",
+    "title": "Kitty",
     "image": "/products/cute/Kitty.jpg",
     "price": 8,
     "category": "Cute",
     "description": "A sweet and curious little kitty, the epitome of cuteness."
   },
   {
-    "name": "Panda",
+    "title": "Panda",
     "image": "/products/cute/Panda.jpg",
     "price": 5,
     "category": "Cute",
     "description": "A lovable panda bear, a symbol of peace and harmony."
   },
   {
-    "name": "Playing-Dog",
+    "title": "Playing-Dog",
     "image": "/products/cute/Playing-Dog.jpg",
     "price": 5,
     "category": "Cute",
     "description": "An energetic and playful dog, always ready for fun and games."
   },
   {
-    "name": "Rabbit",
+    "title": "Rabbit",
     "image": "/products/cute/Rabbit.jpg",
     "price": 8,
     "category": "Cute",
     "description": "A fluffy and gentle rabbit, a favorite companion for all ages."
   },
   {
-    "name": "Teddy",
+    "title": "Teddy",
     "image": "/products/cute/Teddy.jpg",
     "price": 5,
     "category": "Cute",
     "description": "A cuddly teddy bear, bringing comfort and joy to everyone."
   },
   {
-    "name": "Tom",
+    "title": "Tom",
     "image": "/products/cute/Tom.jpg",
     "price": 15,
     "category": "Cute",
     "description": "A friendly and mischievous cat, known for its adventurous spirit."
   },
   {
-    "name": "3D-Mandala",
+    "title": "3D-Mandala",
     "image": "/products/mandala/3D-Mandala.png",
     "price": 10,
     "category": "Mandala",
     "description": "An intricate and mesmerizing 3D mandala design, a feast for the eyes."
   },
   {
-    "name": "Butterfly",
+    "title": "Butterfly",
     "image": "/products/mandala/Buterfly.jpg",
     "price": 8,
     "category": "Mandala",
     "description": "A delicate and graceful butterfly, a symbol of transformation and beauty."
   },
   {
-    "name": "Circle-Mandala",
+    "title": "Circle-Mandala",
     "image": "/products/mandala/Circle-Mandala.jpg",
     "price": 12,
     "category": "Mandala",
     "description": "A beautifully symmetrical circle mandala, radiating harmony and balance."
   },
   {
-    "name": "Color-Mandala",
+    "title": "Color-Mandala",
     "image": "/products/mandala/Color-Mandala.jpg",
     "price": 9,
     "category": "Mandala",
     "description": "A vibrant and colorful mandala, representing unity and creativity."
   },
   {
-    "name": "Conch shell",
+    "title": "Conch shell",
     "image": "/products/mandala/Conch shell.jpg",
     "price": 7,
     "category": "Mandala",
     "description": "A mystical and symbolic conch shell, evoking a sense of tranquility."
   },
   {
-    "name": "Doodle-Art",
+    "title": "Doodle-Art",
     "image": "/products/mandala/Doodle-Art.jpg",
     "price": 6,
     "category": "Mandala",
     "description": "A playful and whimsical doodle art, celebrating imagination and spontaneity."
   },
   {
-    "name": "Emission",
+    "title": "Emission",
     "image": "/products/mandala/Emission.jpg",
     "price": 11,
     "category": "Mandala",
     "description": "An abstract and radiant emission, capturing the essence of light and energy."
   },
   {
-    "name": "Flower-Mandala",
+    "title": "Flower-Mandala",
     "image": "/products/mandala/Flower-Mandala.png",
     "price": 10,
     "category": "Mandala",
     "description": "A harmonious and floral mandala, symbolizing growth and blooming beauty."
   },
   {
-    "name": "Flute",
+    "title": "Flute",
     "image": "/products/mandala/Flute.jpg",
     "price": 13,
     "category": "Mandala",
     "description": "An elegant and soulful flute, producing melodies that touch the heart."
   },
   {
-    "name": "Hen",
+    "title": "Hen",
     "image": "/products/mandala/Hen.jpg",
     "price": 7,
     "category": "Mandala",
     "description": "A charming and endearing hen, a cheerful addition to any space."
   },
   {
-    "name": "IceCream",
+    "title": "IceCream",
     "image": "/products/mandala/IceCream.jpg",
     "price": 5,
     "category": "Mandala",
     "description": "A delightful and delicious ice cream cone, a sweet treat to savor."
   },
   {
-    "name": "leaves",
+    "title": "leaves",
     "image": "/products/mandala/leaves.jpg",
     "price": 8,
     "category": "Mandala",
     "description": "A collection of vibrant leaves, celebrating nature's beauty and diversity."
   },
   {
-    "name": "Peacock-Earring",
+    "title": "Peacock-Earring",
     "image": "/products/mandala/Peacock-Earring.jpg",
     "price": 14,
     "category": "Mandala",
     "description": "An exquisite peacock earring, symbolizing grace and elegance."
   },
   {
-    "name": "Plants",
+    "title": "Plants",
     "image": "/products/mandala/Plants.jpg",
     "price": 9,
     "category": "Mandala",
     "description": "A lush and verdant plant arrangement, bringing life and freshness indoors."
   },
   {
-    "name": "Water-can",
+    "title": "Water-can",
     "image": "/products/mandala/Water can.jpg",
     "price": 12,
     "category": "Mandala",
     "description": "A vintage-style watering can, a nurturing companion for your beloved plants."
   },
   {
-    "name": "2D home",
+    "title": "2D home",
     "image": "/products/Pencil/2d home.jpg",
     "price": 12,
     "category": "Pencil",
     "description": "A charming 2D home sketch, capturing the essence of comfort and warmth."
   },
   {
-    "name": "butterfly",
+    "title": "butterfly",
     "image": "/products/Pencil/Butterfly.jpg",
     "price": 7,
     "category": "Pencil",
     "description": "An elegant butterfly drawing, symbolizing transformation and freedom."
   },
   {
-    "name": "Birds",
+    "title": "Birds",
     "image": "/products/Pencil/Birds.jpg",
     "price": 9,
     "category": "Pencil",
     "description": "A delightful sketch of birds in flight, representing harmony and unity."
   },
   {
-    "name": "Father-Daughter",
+    "title": "Father-Daughter",
     "image": "/products/Pencil/Father-Daughter.jpg",
     "price": 14,
     "category": "Pencil",
     "description": "A heartwarming drawing of a father and daughter, showcasing love and bonding."
   },
   {
-    "name": "Friends",
+    "title": "Friends",
     "image": "/products/Pencil/Friends.jpg",
     "price": 10,
     "category": "Pencil",
     "description": "A touching depiction of friendship, a bond that knows no boundaries."
   },
   {
-    "name": "girl",
+    "title": "girl",
     "image": "/products/Pencil/Girl.jpg",
     "price": 6,
     "category": "Pencil",
     "description": "An innocent and endearing sketch of a girl, radiating innocence and joy."
   },
   {
-    "name": "GirlwithUmbrella",
+    "title": "GirlwithUmbrella",
     "image": "/products/Pencil/GirlwithUmbrella.jpg",
     "price": 8,
     "category": "Pencil",
     "description": "A whimsical illustration of a girl with an umbrella, ready to embrace rain's magic."
   },
   {
-    "name": "House",
+    "title": "House",
     "image": "/products/Pencil/House.jpg",
     "price": 11,
     "category": "Pencil",
     "description": "A cozy and inviting house sketch, a sanctuary where memories are made."
   },
   {
-    "name": "Mind",
+    "title": "Mind",
     "image": "/products/Pencil/Mind.jpg",
     "price": 13,
     "category": "Pencil",
     "description": "A surreal representation of the mind, a realm of imagination and wonder."
   },
   {
-    "name": "Plant",
+    "title": "Plant",
     "image": "/products/Pencil/Plant.jpg",
     "price": 5,
     "category": "Pencil",
     "description": "A lovely Pencil sketch of a potted plant, celebrating nature's beauty indoors."
   },
   {
-    "name": "Radha-Krishna",
+    "title": "Radha-Krishna",
     "image": "/products/Pencil/Radha-Krishna.jpg",
     "price": 15,
     "category": "Pencil",
     "description": "An artistic portrayal of the divine love between Radha and Krishna."
   },
   {
-    "name": "TreeandGirl",
+    "title": "TreeandGirl",
     "image": "/products/Pencil/TreeandGirl.jpg",
     "price": 12,
     "category": "Pencil",
     "description": "A heart-touching drawing of a girl sitting under the shade of a majestic tree."
   },
   {
-    "name": "Animals",
+    "title": "Animals",
     "image": "/products/random/Animals.jpg",
     "price": 10,
     "category": "Random",
     "description": "A delightful artwork showcasing various adorable animals in their natural habitats."
   },
   {
-    "name": "Birds",
+    "title": "Birds",
     "image": "/products/random/Birds.jpg",
     "price": 8,
     "category": "Random",
     "description": "A captivating illustration featuring a colorful flock of birds soaring through the skies."
   },
   {
-    "name": "Elephants",
+    "title": "Elephants",
     "image": "/products/random/Elephants.jpg",
     "price": 12,
     "category": "Random",
     "description": "A heartwarming depiction of majestic elephants, symbolizing strength and wisdom."
   },
   {
-    "name": "Ganesha",
+    "title": "Ganesha",
     "image": "/products/random/Ganesha.jpg",
     "price": 15,
     "category": "Random",
     "description": "A divine portrayal of Lord Ganesha, the remover of obstacles, blessing all with his grace."
   },
   {
-    "name": "Horse",
+    "title": "Horse",
     "image": "/products/random/Horse.jpg",
     "price": 10,
     "category": "Random",
     "description": "An elegant artwork capturing the grace and power of a magnificent horse in motion."
   },
   {
-    "name": "Housee",
+    "title": "Housee",
     "image": "/products/random/Housee.jpg",
     "price": 6,
     "category": "Random",
     "description": "A cozy and charming depiction of a home, a place where cherished memories are made."
   },
   {
-    "name": "Krishna-Flute",
+    "title": "Krishna-Flute",
     "image": "/products/random/Krishna-Flute.jpg",
     "price": 12,
     "category": "Random",
     "description": "A soul-stirring portrayal of Lord Krishna playing the flute, enchanting all with his music."
   },
   {
-    "name": "Krishna-Friends",
+    "title": "Krishna-Friends",
     "image": "/products/random/Krishna-Friends.jpg",
     "price": 9,
     "category": "Random",
     "description": "A heartwarming scene of Lord Krishna with his beloved friends, creating cherished memories."
   },
   {
-    "name": "LordKrishna",
+    "title": "LordKrishna",
     "image": "/products/random/Lordkrishna.jpg",
     "price": 14,
     "category": "Random",
     "description": "An awe-inspiring depiction of Lord Krishna, radiating love and divinity."
   },
   {
-    "name": "Rama",
+    "title": "Rama",
     "image": "/products/random/Rama.jpg",
     "price": 13,
     "category": "Random",
     "description": "A regal and majestic portrait of Lord Rama, exemplifying virtue and righteousness."
   },
   {
-    "name": "Starry Night",
+    "title": "Starry Night",
     "image": "/products/random/Starry Night.jpg",
     "price": 7,
     "category": "Random",
     "description": "A mesmerizing night scene adorned with stars, sparking dreams and wonder."
   },
   {
-    "name": "Valmiki",
+    "title": "Valmiki",
     "image": "/products/random/Valmiki.jpg",
     "price": 8,
     "category": "Random",
     "description": "A tribute to the great sage Valmiki, the author of the epic Ramayana."
   },
   {
-    "name": "Warli Art",
+    "title": "Warli Art",
     "image": "/products/random/Warli Art.jpg",
     "price": 11,
     "category": "Random",
     "description": "A beautiful representation of traditional Warli art, showcasing the simplicity of rural life."
   },
   {
-    "name": "Warli",
+    "title": "Warli",
     "image": "/products/random/Warli.jpg",
     "price": 10,
     "category": "Random",

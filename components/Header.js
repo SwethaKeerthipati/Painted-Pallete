@@ -17,7 +17,7 @@ export default function Header({ onSearchChange }) {
   };
 
   return (
-    <header className="sticky-header w-full justify-center top-0 inset-x-0 z-30 bg-white text-gray-900 glassmorphism px-6 md:block hidden">
+    <header className="sticky-header w-full justify-center top-0 inset-x-0 z-30 bg-white text-gray-900 glassmorphism px-6 md:block">
       <div className="flex items-center w-full max-w-screen-xl py-2 xl:space-x-16 lg:space-x-12 space-x-7 mx-auto">
         <div className="flex items-center">
           <Link href="/" legacyBehavior>

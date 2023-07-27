@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function ProductDetails({ name, description, price, image }) {
+export default function ProductDetails({ tilte, description, price, image }) {
   return (
     <div className="flex flex-row items-center p-6">
       <div className="w-1/2 pr-4">
@@ -15,7 +15,7 @@ export default function ProductDetails({ name, description, price, image }) {
         />
       </div>
       <div className="w-1/2">
-        <h2 className="text-2xl font-bold mb-2">{name}</h2>
+        <h2 className="text-2xl font-bold mb-2">{title}</h2>
         <p className="text-sm mb-4">{description}</p>
         <p className="text-lg font-bold">€{price}</p>
         <div className="flex mt-4">

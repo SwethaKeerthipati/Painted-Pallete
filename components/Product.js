@@ -4,7 +4,7 @@ import Link from "next/link";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 // import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-function Product({ id, name, price, description, category, image }) {
+function Product({ id, title, price, description, category, image }) {
   return (
     // <Fade bottom>
     <Link href={`/products/${id}`}>
@@ -21,7 +21,7 @@ function Product({ id, name, price, description, category, image }) {
         </div>
 
         <div className="mt-2">
-          <h3 className="font-bold text-lg px-3">{name}</h3>
+          <h3 className="font-bold text-lg px-3">{title}</h3>
         </div>
 
         <p className="text-xs mb-2 line-clamp-2 px-3 link">{description}</p>
