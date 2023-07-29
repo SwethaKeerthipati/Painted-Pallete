@@ -1,59 +1,130 @@
-// CartProduct.js
-
 import React from "react";
 import { useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "../slices/cartSlice";
 import Image from "next/image";
+import Link from "next/link";
+import { Remove } from "@mui/icons-material";
+import { Add } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
-function CartProduct({ id, title, price, image, quantity }) {
+function CartProduct({
+  id,
+  title,
+  price,
+  image,
+  quantity,
+  category,
+  description,
+  border,
+  disabled,
+}) {
   const dispatch = useDispatch();
+  const router = useRouter();
+  const total = price * quantity;
 
-  const handleRemoveFromCart = () => {
-    dispatch(removeFromCart(id));
-  };
+  const removeItemFromCart = () => dispatch(removeFromCart({ id }));
+  const incQty = () =>
+    dispatch(
+      updateQuantity({
+        id,
+        title,
+        price,
+        description,
+        category,
+        image,
+        quantity: quantity + 1,
+      })
+    );
+  const decQty = () =>
+    dispatch(
+      updateQuantity({
+        id,
+        title,
+        price,
+        description,
+        category,
+        image,
+        quantity: quantity - 1,
+      })
+    );
 
-  const handleQuantityChange = (event) => {
-    const newQuantity = parseInt(event.target.value, 10);
-    dispatch(updateQuantity({ id, quantity: newQuantity }));
-  };
-  const totalPrice = (price * quantity).toFixed(2);
-
+  const updateQuantity =
+    ({ id, title, price, description, category, image, quantity }) =>
+    (dispatch) => {
+      if (quantity === 0) {
+        dispatch(removeFromCart({ id }));
+      } else {
+        dispatch({
+          type: "cart/updateQuantity",
+          payload: { id, title, price, description, category, image, quantity },
+        });
+      }
+    };
   return (
-    <div className="cart-product border p-4 rounded-md flex items-center mb-4">
-      <div className="image-container w-40 h-40 mr-4">
-        <Image
-          src={image}
-          alt={title}
-          height={100}
-          width={200}
-          className="w-full h-full object-cover rounded-md"
-        />
-      </div>
-
-      <div className="product-details">
-        <h3 className="font-bold text-lg">{title}</h3>
-        <p className="text-sm text-gray-500">Price: €{price}</p>
-        <div className="flex items-center mt-2">
-          <label htmlFor={`quantity-${id}`} className="mr-2">
-            Quantity:
-          </label>
-          <input
-            type="number"
-            id={`quantity-${id}`}
-            value={quantity}
-            onChange={handleQuantityChange}
-            min="1"
-            className="w-16 px-2 py-1 border rounded-md"
+    <div
+      className={`block bg-white py-6 sm:grid sm:grid-cols-5 ${
+        border ? "border-b border-gray-300" : ""
+      }`}
+    >
+      <>
+        <div className="text-center sm:text-left my-auto">
+          <Image
+            src={image}
+            width={150}
+            height={150}
+            objectFit="contain"
+            className="cursor-pointer"
+            alt=""
+            onClick={() => router.push(`/product-details/${id}`)}
           />
         </div>
-        <p className="mt-2 font-bold">Total Price: €{totalPrice}</p>
-        <button
-          onClick={handleRemoveFromCart}
-          className="mt-2 px-4 py-2 bg-red-500 text-white rounded-md"
-        >
-          Remove
-        </button>
-      </div>
+
+        <div className="col-span-3 sm:p-4 mt-2 mb-6 sm:my-0">
+          <h4 className="mb-3 link lg:text-xl md:text-lg text-base capitalize font-medium">
+            {title}
+          </h4>
+          <p className="lg:text-sm text-xs my-2  mb-4 line-clamp-3 link text-gray-500">
+            {description}
+          </p>
+          <span className="font-medium md:text-base text-sm">
+            {quantity} × €{price} =
+            <span className="font-bold text-gray-700 mx-1">€{total}</span>
+          </span>
+        </div>
+
+        <div className="flex flex-col space-y-4 my-auto  justify-self-end">
+          <div className="flex justify-between">
+            <button
+              className={`button sm:p-1 ${disabled ? "opacity-50" : ""}`}
+              onClick={decQty}
+              disabled={disabled}
+            >
+              <Remove className="h-5" />
+            </button>
+            <div className="p-2 whitespace-normal sm:p-1 sm:whitespace-nowrap">
+              <span className="font-bold md:text-base text-sm text-gray-700">
+                {quantity}
+              </span>
+            </div>
+            <button
+              className={`button sm:p-1 ${disabled ? "opacity-50" : ""}`}
+              onClick={incQty}
+              disabled={disabled}
+            >
+              <Add className="h-5" />
+            </button>
+          </div>
+          <button
+            className={`button py-2  lg:px-10 md:px-8 px-6 ${
+              disabled ? "opacity-50" : ""
+            }`}
+            onClick={removeItemFromCart}
+            disabled={disabled}
+          >
+            Remove
+          </button>
+        </div>
+      </>
     </div>
   );
 }

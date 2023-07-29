@@ -19,7 +19,11 @@
     @apply cursor-pointer hover:text-blue-900 active:text-blue-900;
   }
 } */
-
+@layer components {
+  .button {
+    background-color: rgba(10, 129, 171, 1);
+  }
+}
 @layer utilities {
   .active-category {
     background-color: rgba(10, 129, 171, var(--tw-bg-opacity));
@@ -64,21 +68,4 @@
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-}
-
-.cart-product {
-  border: 1px solid #e2e2e2;
-}
-
-.image-container {
-  width: 160px;
-  height: 160px;
-}
-
-.product-details {
-  flex: 1;
-}
-
-input[type="number"] {
-  width: 60px;
 }

@@ -16,7 +16,7 @@ export default function Header({ onSearchChange }) {
 
   // Calculate the total cart count based on the quantity of each cart item
   const cartCount = cartItems
-    ? cartItems.reduce((total, item) => total + item.quantity, 0)
+    ? cartItems.reduce((total, item) => total + (item.quantity || 0), 0)
     : 0;
 
   const handleCartClick = () => {

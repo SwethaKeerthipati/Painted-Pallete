@@ -13,6 +13,12 @@ module.exports = {
     animation: {
       "fade-in": "fadeIn 1s ease-in",
     },
+    experimental: {
+      applyComplexClasses: true,
+      uniformColorPalette: true,
+      extendedSpacingScale: true,
+      globalStyles: true,
+    },
     screens: {
       sm: "640px",
       md: "768px",

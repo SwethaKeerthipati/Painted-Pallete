@@ -5,7 +5,9 @@ import Header from "../../components/Header";
 
 function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems);
-
+  if (cartItems.length === 0) {
+    return <p>Your cart is empty.</p>;
+  }
   return (
     <>
       <Header />

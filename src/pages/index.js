@@ -8,7 +8,7 @@ import Banner from "../../components/Banner";
 import Newsletter from "../../components/NewsLetter";
 import Categories from "../../components/Categories";
 
-export default function Home() {
+export default function Home({ addItemToCart }) {
   const [search, setSearch] = useState("");
   const [matchedCategory, setMatchedCategory] = useState("All");
 
@@ -73,8 +73,9 @@ export default function Home() {
                     passHref
                   >
                     <Product
+                      onClick={addItemToCart}
                       id={product._id}
-                      name={product.name}
+                      title={product.title}
                       price={product.price}
                       description={product.description}
                       category={product.category}
