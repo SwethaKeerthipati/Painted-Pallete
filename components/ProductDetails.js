@@ -7,6 +7,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Bolt } from "@mui/icons-material";
 import Header from "./Header";
 import { generateUniqueId } from "../utils/uuid";
+import addedToCartToast from "../utils/Toast/addedToCart";
 
 function ProductDetails({ title, price, description, category, image }) {
   const router = useRouter();
@@ -20,9 +21,10 @@ function ProductDetails({ title, price, description, category, image }) {
       price,
       image,
       quantity: 1,
+      toast: true,
     };
     dispatch(addToCart(product));
-    console.log(`Adding ${title} to cart.`);
+    addedToCartToast(image, title);
   };
 
   const handleBuyNow = () => {
@@ -32,6 +34,7 @@ function ProductDetails({ title, price, description, category, image }) {
       price,
       image,
       quantity: 1,
+      toast: false,
     };
     dispatch(addToCart(product));
     router.push("/cart");

@@ -32,6 +32,9 @@ const cartSlice = createSlice({
         (item) => item.id !== itemIdToRemove
       );
     },
+    emptyCart: (state) => {
+      state.cartItems = [];
+    },
   },
 });
 
