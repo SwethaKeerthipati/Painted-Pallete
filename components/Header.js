@@ -8,7 +8,7 @@ import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Search from "./Search";
-import Dropdown from "./Dropdown"; // Import the Dropdown component here
+import DropDown from "./DropDown";
 
 export default function Header({ onSearchChange }) {
   const { data: session, loading } = useSession();
@@ -77,7 +77,7 @@ export default function Header({ onSearchChange }) {
                 {dropDown && (
                   <div className="absolute top-14 right-1">
                     {/* Step 2: Render the Dropdown component */}
-                    <Dropdown hideDropDown={() => setDropDown(false)} />
+                    <DropDown hideDropDown={() => setDropDown(false)} />
                   </div>
                 )}
               </span>
