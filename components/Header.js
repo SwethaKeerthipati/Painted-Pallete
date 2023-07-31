@@ -8,6 +8,7 @@ import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Search from "./Search";
+import DropDown from "./DropDown";
 
 export default function Header({ onSearchChange }) {
   const { data: session, loading } = useSession();
