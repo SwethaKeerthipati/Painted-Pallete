@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useRouter } from "next/router";
-import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Search from "./Search";
-import DropDown from "./DropDown";
 
 export default function Header({ onSearchChange }) {
   const { data: session, loading } = useSession();
   const router = useRouter();
-  const [dropDown, setDropDown] = useState(false);
 
   // Step 2: Use useSelector to get the cartItems from the Redux store
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -32,7 +28,7 @@ export default function Header({ onSearchChange }) {
   };
 
   const handleSignOut = () => {
-    signOut(); // Update the handleSignOut function to call signOut()
+    signOut();
   };
 
   return (
@@ -59,32 +55,11 @@ export default function Header({ onSearchChange }) {
                 Login
               </span>
             ) : (
-              <span
-                className="relative"
-                onClick={() => setDropDown((value) => !value)}
-              >
-                <span className="flex items-center cursor-pointer">
-                  <Image
-                    src={session?.user?.image || "/img/profile_pic.svg"}
-                    loading="profileimage"
-                    alt=""
-                    width="24"
-                    height="24"
-                    className="object-contain w-10 h-10 rounded-full mr-1 hover:shadow-md"
-                  />
-                  <ArrowDownwardIcon className="lg:w-6 w-4" />
-                </span>
-                {dropDown && (
-                  <div className="absolute top-14 right-1">
-                    {/* Step 2: Render the Dropdown component */}
-                    <DropDown hideDropDown={() => setDropDown(false)} />
-                  </div>
-                )}
+              <span className="link" onClick={handleSignOut}>
+                Logout
               </span>
             )
-          ) : (
-            <Skeleton circle={true} width={40} height={40} />
-          )}
+          ) : null}
           <Link href="/orders" passHref>
             <span className="link">Orders</span>
           </Link>
