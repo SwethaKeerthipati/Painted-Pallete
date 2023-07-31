@@ -8,9 +8,7 @@ import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Search from "./Search";
-import DropDown from "./DropDown";
-
-// ... (import statements)
+// import DropDown from "./DropDown";
 
 export default function Header({ onSearchChange }) {
   const { data: session, loading } = useSession();
@@ -78,8 +76,7 @@ export default function Header({ onSearchChange }) {
                 </span>
                 {dropDown && (
                   <div className="absolute top-14 right-1">
-                    {/* Replace ArrowDownwardIcon with the actual drop-down content */}
-                    <DropDown hideDropDown={() => setDropDown(false)} />
+                    {/* <DropDown hideDropDown={() => setDropDown(false)} /> */}
                   </div>
                 )}
               </span>
