@@ -31,6 +31,8 @@ export default function Header({ onSearchChange }) {
     signOut();
   };
 
+  const userImage = session?.user?.image;
+
   return (
     <header className="sticky top-0 inset-x-0 z-30 bg-white text-gray-900 glassmorphism px-6 md:block hidden">
       <div className="flex items-center w-full max-w-screen-xl py-2 xl:space-x-16 lg:space-x-12 space-x-7 mx-auto">
@@ -55,14 +57,48 @@ export default function Header({ onSearchChange }) {
                 Login
               </span>
             ) : (
-              <span className="link" onClick={handleSignOut}>
-                Logout
-              </span>
+              <div className="relative">
+                {/* User Image (Circle) */}
+                <div className="w-10 h-10 rounded-full overflow-hidden">
+                  {userImage ? (
+                    <Image
+                      src={userImage}
+                      alt="User"
+                      width={40}
+                      height={40}
+                      objectFit="cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-400"></div>
+                  )}
+                </div>
+                {/* Dropdown Menu */}
+                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10 hidden">
+                  <Link href="/profile" passHref>
+                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Profile
+                    </span>
+                  </Link>
+                  <Link href="/orders" passHref>
+                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Orders
+                    </span>
+                  </Link>
+                  <Link href="/contact" passHref>
+                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                      Contact
+                    </span>
+                  </Link>
+                  <span
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 cursor-pointer"
+                    onClick={handleSignOut}
+                  >
+                    Logout
+                  </span>
+                </div>
+              </div>
             )
           ) : null}
-          <Link href="/orders" passHref>
-            <span className="link">Orders</span>
-          </Link>
           <Link href="/about" passHref>
             <span className="link">About</span>
           </Link>
