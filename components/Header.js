@@ -8,7 +8,6 @@ import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Search from "./Search";
-// import DropDown from "./DropDown";
 
 export default function Header({ onSearchChange }) {
   const { data: session, loading } = useSession();
@@ -60,7 +59,7 @@ export default function Header({ onSearchChange }) {
               </span>
             ) : (
               <span
-                className="relative cursor-pointer"
+                className="relative"
                 onClick={() => setDropDown((value) => !value)}
               >
                 <span className="flex items-center cursor-pointer">
@@ -76,7 +75,9 @@ export default function Header({ onSearchChange }) {
                 </span>
                 {dropDown && (
                   <div className="absolute top-14 right-1">
-                    {/* <DropDown hideDropDown={() => setDropDown(false)} /> */}
+                    <ArrowDownwardIcon
+                      hideDropDown={() => setDropDown(false)}
+                    />
                   </div>
                 )}
               </span>
