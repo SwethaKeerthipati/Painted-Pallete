@@ -10,6 +10,8 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Search from "./Search";
 import DropDown from "./DropDown";
 
+// ... (import statements)
+
 export default function Header({ onSearchChange }) {
   const { data: session, loading } = useSession();
   const router = useRouter();
@@ -60,7 +62,7 @@ export default function Header({ onSearchChange }) {
               </span>
             ) : (
               <span
-                className="relative"
+                className="relative cursor-pointer"
                 onClick={() => setDropDown((value) => !value)}
               >
                 <span className="flex items-center cursor-pointer">
@@ -76,9 +78,8 @@ export default function Header({ onSearchChange }) {
                 </span>
                 {dropDown && (
                   <div className="absolute top-14 right-1">
-                    <ArrowDownwardIcon
-                      hideDropDown={() => setDropDown(false)}
-                    />
+                    {/* Replace ArrowDownwardIcon with the actual drop-down content */}
+                    <DropDown hideDropDown={() => setDropDown(false)} />
                   </div>
                 )}
               </span>

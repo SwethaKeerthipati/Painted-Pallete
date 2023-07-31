@@ -47,8 +47,14 @@ function Dropdown({ hideDropDown }) {
   );
 }
 
+// const clickOutsideConfig = {
+//   handleClickOutside: () => Dropdown.handleClickOutside,
+// };
+
+// export default onClickOutside(Dropdown, clickOutsideConfig);
+
 const clickOutsideConfig = {
-  handleClickOutside: () => Dropdown.handleClickOutside,
+  handleClickOutside: (instance) => instance.handleClickOutside,
 };
 
 export default onClickOutside(Dropdown, clickOutsideConfig);
