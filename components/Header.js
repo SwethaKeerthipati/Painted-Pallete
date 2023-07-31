@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useRouter } from "next/router";
+import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Search from "./Search";
+import Dropdown from "./Dropdown"; // Import the Dropdown component here
 
 export default function Header({ onSearchChange }) {
   const { data: session, loading } = useSession();
   const router = useRouter();
+  const [dropDown, setDropDown] = useState(false);
 
   // Step 2: Use useSelector to get the cartItems from the Redux store
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -28,10 +32,8 @@ export default function Header({ onSearchChange }) {
   };
 
   const handleSignOut = () => {
-    signOut();
+    signOut(); // Update the handleSignOut function to call signOut()
   };
-
-  const userImage = session?.user?.image;
 
   return (
     <header className="sticky top-0 inset-x-0 z-30 bg-white text-gray-900 glassmorphism px-6 md:block hidden">
@@ -57,48 +59,35 @@ export default function Header({ onSearchChange }) {
                 Login
               </span>
             ) : (
-              <div className="relative">
-                {/* User Image (Circle) */}
-                <div className="w-10 h-10 rounded-full overflow-hidden">
-                  {userImage ? (
-                    <Image
-                      src={userImage}
-                      alt="User"
-                      width={40}
-                      height={40}
-                      objectFit="cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-400"></div>
-                  )}
-                </div>
-                {/* Dropdown Menu */}
-                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10 hidden">
-                  <Link href="/profile" passHref>
-                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                      Profile
-                    </span>
-                  </Link>
-                  <Link href="/orders" passHref>
-                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                      Orders
-                    </span>
-                  </Link>
-                  <Link href="/contact" passHref>
-                    <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                      Contact
-                    </span>
-                  </Link>
-                  <span
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100 cursor-pointer"
-                    onClick={handleSignOut}
-                  >
-                    Logout
-                  </span>
-                </div>
-              </div>
+              <span
+                className="relative"
+                onClick={() => setDropDown((value) => !value)}
+              >
+                <span className="flex items-center cursor-pointer">
+                  <Image
+                    src={session?.user?.image || "/img/profile_pic.svg"}
+                    loading="profileimage"
+                    alt=""
+                    width="24"
+                    height="24"
+                    className="object-contain w-10 h-10 rounded-full mr-1 hover:shadow-md"
+                  />
+                  <ArrowDownwardIcon className="lg:w-6 w-4" />
+                </span>
+                {dropDown && (
+                  <div className="absolute top-14 right-1">
+                    {/* Step 2: Render the Dropdown component */}
+                    <Dropdown hideDropDown={() => setDropDown(false)} />
+                  </div>
+                )}
+              </span>
             )
-          ) : null}
+          ) : (
+            <Skeleton circle={true} width={40} height={40} />
+          )}
+          <Link href="/orders" passHref>
+            <span className="link">Orders</span>
+          </Link>
           <Link href="/about" passHref>
             <span className="link">About</span>
           </Link>
