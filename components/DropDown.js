@@ -1,4 +1,4 @@
-import { signOut, useSession } from "next-auth/client";
+import { signOut, useSession } from "next-auth";
 import { useRouter } from "next/router";
 import onClickOutside from "react-onclickoutside";
 
