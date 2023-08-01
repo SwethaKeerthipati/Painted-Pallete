@@ -11,10 +11,7 @@ export default function Header({ onSearchChange }) {
   const { data: session, loading } = useSession();
   const router = useRouter();
 
-  // Step 2: Use useSelector to get the cartItems from the Redux store
   const cartItems = useSelector((state) => state.cart.cartItems);
-
-  // Calculate the total cart count based on the quantity of each cart item
   const cartCount = cartItems
     ? cartItems.reduce((total, item) => total + (item.quantity || 0), 0)
     : 0;
@@ -32,14 +29,14 @@ export default function Header({ onSearchChange }) {
   };
 
   return (
-    <header className="sticky top-0 inset-x-0 z-30 bg-white text-gray-900 glassmorphism px-6 md:block hidden">
+    <header className="sticky top-0 inset-x-0 z-30 bg-white text-gray-900 glassmorphism px-6">
       <div className="flex items-center w-full max-w-screen-xl py-2 xl:space-x-16 lg:space-x-12 space-x-7 mx-auto">
         <div className="flex items-center">
           <Image
             src="/products/pp-logo.png"
             alt="logo"
             className="cursor-pointer"
-            width={100}
+            width={50}
             objectFit="contain"
             height={50}
             onClick={() => router.push("/")}
@@ -51,13 +48,26 @@ export default function Header({ onSearchChange }) {
         <div className="flex items-center xl:space-x-12 lg:space-x-10 space-x-7 font-medium lg:text-base text-sm">
           {!loading ? (
             !session ? (
-              <span className="link" onClick={handleSignIn}>
-                Login
-              </span>
+              <Link href="/login" passHref>
+                <span className="link">Login</span>
+              </Link>
             ) : (
-              <span className="link" onClick={handleSignOut}>
-                Logout
-              </span>
+              <div className="user-dropdown">
+                <button className="dropbtn">
+                  {session.user.name.split(" ")[0]}
+                  <i className="fa fa-caret-down"></i>
+                </button>
+                <div className="dropdown-content">
+                  <button onClick={() => router.push("/profile")}>
+                    Profile
+                  </button>
+                  <button onClick={() => router.push("/orders")}>Orders</button>
+                  <button onClick={() => router.push("/contact")}>
+                    Contact Us
+                  </button>
+                  <button onClick={handleSignOut}>Logout</button>
+                </div>
+              </div>
             )
           ) : null}
           <Link href="/orders" passHref>
