@@ -1,13 +1,24 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLocalLogin = (e) => {
+  const handleLocalLogin = async (e) => {
     e.preventDefault();
-    signIn("email", { email, password });
+    const result = await signIn("email", { email, password, redirect: false });
+
+    if (!result.error) {
+      // Login successful, redirect to home page
+      router.push("/"); // Replace this with the actual path of your home page
+    } else {
+      // Login failed, show error toast
+      toast.error("Login failed. Please check your credentials.");
+    }
+    // signIn("email", { email, password });
   };
 
   const handleGoogleLogin = () => {
@@ -80,6 +91,11 @@ const LoginForm = () => {
           Sign up
         </a>
       </p>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={true}
+      />
     </div>
   );
 };
