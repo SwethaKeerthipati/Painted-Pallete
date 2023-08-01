@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Search from "./Search";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export default function Header({ onSearchChange }) {
   const { data: session, loading } = useSession();
@@ -55,7 +56,12 @@ export default function Header({ onSearchChange }) {
               <div className="user-dropdown">
                 <button className="dropbtn">
                   {session.user.name.split(" ")[0]}
-                  <i className="fa fa-caret-down"></i>
+                  <Image
+                    src={session.user.image}
+                    alt="Profile"
+                    className="w-8 h-8 rounded-full ml-2"
+                  />
+                  <KeyboardArrowDownIcon />
                 </button>
                 <div className="dropdown-content">
                   <button onClick={() => router.push("/profile")}>

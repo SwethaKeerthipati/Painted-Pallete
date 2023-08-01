@@ -70,6 +70,36 @@
   -webkit-backdrop-filter: blur(6px);
 }
 
+.user-dropdown {
+  position: relative;
+}
+
+.user-dropdown .dropdown-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: none;
+}
+
+.user-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.user-dropdown .dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.user-dropdown .dropdown-content button:hover {
+  background-color: #f1f1f1;
+}
+
 @media only screen and (max-width: 780px) {
   .loader svg {
     width: 120px;

@@ -13,6 +13,8 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackUrl:
+        "https://painted-pallete-swethakeerthipati.vercel.app/api/auth/callback/google",
       secret: process.env.SECRET,
     }),
     // ...add more providers here
