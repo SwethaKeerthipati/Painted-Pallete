@@ -9,14 +9,11 @@ const LoginForm = () => {
 
   const handleLocalLogin = async (e) => {
     e.preventDefault();
-    const result = await signIn("email", { email, password, redirect: false });
-
-    if (!result.error) {
-      // Login successful, redirect to home page
-      router.push("/"); // Replace this with the actual path of your home page
-    } else {
-      // Login failed, show error toast
-      toast.error("Login failed. Please check your credentials.");
+    try {
+      await signIn("email", { email, password });
+      toast.success("Login successful!"); // Show success toast
+    } catch (error) {
+      toast.error("Invalid email, username, or password."); // Show error toast
     }
     // signIn("email", { email, password });
   };

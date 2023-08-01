@@ -108,8 +108,8 @@ function CartPage() {
                   className={`button mt-6 flex items-center justify-center lg:text-lg text-base  py-2 ${
                     disabled ? "opacity-50" : ""
                   }`}
-                  onClick={!disabled ? createCheckoutSession : () => {}}
-                  disabled={disabled}
+                  // onClick={!disabled ? createCheckoutSession : () => {}}
+                  // disabled={disabled}
                 >
                   <CreditCard className="sm:w-6 w-5" />
                   <span className="ml-2">Proceed to checkout </span>
