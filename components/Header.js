@@ -49,9 +49,9 @@ export default function Header({ onSearchChange }) {
         <div className="flex items-center xl:space-x-12 lg:space-x-10 space-x-7 font-medium lg:text-base text-sm">
           {!loading ? (
             !session ? (
-              <Link href="/login" passHref>
-                <span className="link">Login</span>
-              </Link>
+              <span className="link" onClick={handleSignIn}>
+                Login
+              </span>
             ) : (
               <div className="user-dropdown">
                 <button className="dropbtn">
