@@ -14,11 +14,16 @@ const Profile = () => {
     { value: "uk", label: "United Kingdom" },
     // Add more countries as needed
   ];
-
+  const [profileImage, setProfileImage] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [postcode, setPostcode] = useState("");
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setProfileImage(file);
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -31,13 +36,17 @@ const Profile = () => {
       postcode,
     };
     try {
+      const formData = new FormData();
+      if (profileImage) {
+        formData.append("profileImage", profileImage); // Add the profile image to the FormData if it's selected
+      }
+      formData.append("userData", JSON.stringify(data)); // Add the rest of the data as JSON string
+
       const res = await fetch("/api/updateUser", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: formData, // Send the FormData instead of JSON data
       });
       const response = await res.json();
-      // Handle success or error response
     } catch (error) {
       // Handle error
     }
@@ -51,13 +60,34 @@ const Profile = () => {
         {session ? (
           <>
             <div className="w-24 h-24 rounded-full mx-auto mb-4">
-              <Image
-                src={session.user.image}
-                alt="Profile Image"
-                className="object-cover w-full h-full rounded-full"
-                height={300}
-                width={300}
-              />
+              {profileImage ? (
+                <Image
+                  src={URL.createObjectURL(profileImage)}
+                  alt="Profile Image"
+                  className="object-cover w-full h-full rounded-full"
+                  height={300}
+                  width={300}
+                />
+              ) : (
+                <Image
+                  src={session.user.image}
+                  alt="Profile Image"
+                  className="object-cover w-full h-full rounded-full"
+                  height={300}
+                  width={300}
+                />
+              )}
+            </div>
+            <div className="flex justify-center mb-4">
+              <label className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 cursor-pointer">
+                Upload Image
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleImageChange}
+                />
+              </label>
             </div>
             <p className="mb-2">
               <span className="font-semibold">Name:</span> {session.user.name}
@@ -65,58 +95,7 @@ const Profile = () => {
             <p className="mb-2">
               <span className="font-semibold">Email:</span> {session.user.email}
             </p>
-            <form onSubmit={handleFormSubmit} className="mt-6">
-              <div className="mb-4">
-                <label className="block mb-1 font-semibold">
-                  Select Country:
-                </label>
-                <Select
-                  options={countryOptions}
-                  value={selectedCountry}
-                  onChange={(selectedOption) =>
-                    setSelectedCountry(selectedOption)
-                  }
-                  isSearchable={true}
-                  placeholder="Select a country..."
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block mb-1 font-semibold">Street:</label>
-                <input
-                  type="text"
-                  value={street}
-                  onChange={(e) => setStreet(e.target.value)}
-                  required
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block mb-1 font-semibold">City:</label>
-                <input
-                  type="text"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  required
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block mb-1 font-semibold">Postcode:</label>
-                <input
-                  type="text"
-                  value={postcode}
-                  onChange={(e) => setPostcode(e.target.value)}
-                  required
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-              >
-                Save
-              </button>
-            </form>
+            <form onSubmit={handleFormSubmit} className="mt-6"></form>
           </>
         ) : (
           <p className="text-center">Please sign in to view your profile.</p>

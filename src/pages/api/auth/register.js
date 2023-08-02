@@ -1,17 +1,23 @@
 import dbConnect from "../../../../db/connect";
 import User from "../../../../db/models/User";
 import bcrypt from "bcrypt";
+import validator from "validator";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     await dbConnect();
-    const { email, password /* other user data */ } = req.body;
+    const { email, password } = req.body;
 
     try {
-      // Check if user with the given email already exists in the database.
+      // Validate user input
+      if (!validator.isEmail(email)) {
+        return res.status(400).json({ error: "Invalid email format" });
+      }
       const existingUser = await User.findOne({ email });
       if (existingUser) {
-        return res.status(400).json({ error: "User already exists" });
+        return res
+          .status(400)
+          .json({ error: "User with this email already exists" });
       }
 
       // Hash the password before saving it to the database.

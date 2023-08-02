@@ -2,10 +2,9 @@ import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
   {
-    username: {
+    name: {
       type: String,
       required: true,
-      unique: true,
     },
     email: {
       type: String,
@@ -14,10 +13,22 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: [true, "Password is required"],
+      minLength: 6,
     },
+
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
+
+    shippingAddresses: [
+      {
+        street: { type: String, required: true },
+        city: { type: String, required: true },
+        postcode: { type: String, required: true },
+      },
+    ],
   },
   { timestamps: true }
 );
 
-export default mongoose?.models?.User || mongoose.model("User", UserSchema);
+export default mongoose.models.User || mongoose.model("User", UserSchema);

@@ -80,6 +80,9 @@ function CartPage() {
           ) : (
             <div className="flex items-center justify-center w-full px-6 lg:py-20 sm:py-10 py-4">
               <div className="text-center md:max-w-none sm:w-auto mx-auto max-w-xs w-4/5">
+                <h1 className="sm:text-2xl text-xl  font-semibold border-b-2 border-gray-200 pb-4 text-gray-700">
+                  Shopping Cart
+                </h1>
                 <Image
                   src="/products/empty-cart.gif"
                   alt=""

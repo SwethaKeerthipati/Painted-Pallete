@@ -11,8 +11,10 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       await signIn("email", { email, password });
+      console.log("Login Response:", response);
       toast.success("Login successful!"); // Show success toast
     } catch (error) {
+      console.error("Login Error:", error);
       toast.error("Invalid email, username, or password."); // Show error toast
     }
     // signIn("email", { email, password });
