@@ -4,11 +4,12 @@ const UserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Please provide a username"],
+      unique: true,
     },
     email: {
       type: String,
-      required: true,
+      required: [true, "Please provide a email"],
       unique: true,
     },
     password: {
@@ -17,16 +18,23 @@ const UserSchema = new mongoose.Schema(
       minLength: 6,
     },
 
-    resetPasswordToken: String,
-    resetPasswordExpire: Date,
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    forgotPasswordToken: String,
+    forgotPasswordTokenExpiry: Date,
+    verifiedToken: String,
+    // resetPasswordToken: String,
+    // resetPasswordExpire: Date,
 
-    shippingAddresses: [
-      {
-        street: { type: String, required: true },
-        city: { type: String, required: true },
-        postcode: { type: String, required: true },
-      },
-    ],
+    // shippingAddresses: [
+    //   {
+    //     street: { type: String, required: true },
+    //     city: { type: String, required: true },
+    //     postcode: { type: String, required: true },
+    //   },
+    // ],
   },
   { timestamps: true }
 );

@@ -19,7 +19,7 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
-  secret: "18c635437523e8f65ca993c6b931aa3e",
+
   adapter: MongoDBAdapter(clientPromise),
   callbacks: {
     async session({ session, user }) {

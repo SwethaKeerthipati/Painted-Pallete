@@ -5,41 +5,31 @@ import Header from "../../components/Header";
 import { signIn, useSession } from "next-auth/react";
 import { CreditCard } from "@mui/icons-material";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import cartReducer, { selectTotal, emptyCart } from "../../slices/cartSlice";
-import { convert } from "currency-convert";
+import cartReducer, { emptyCart } from "../../slices/cartSlice";
+
+// import { useEffect } from "react";
+// import { loadStripe } from "@stripe/stripe-js";s
+
+// const stripePromise = loadStripe(
+//   "pk_test_51Naeu3Eh0kcTfsxt2DPKCe4dhqczfjlziZJRd5hfcwkDFB08i1uB3lDde1W7zX6TWqFhJi7WrhVbCzAX5uzXDjIM006MFbU4aF"
+// );
 
 function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const [disabled, setDisabled] = useState(false);
-  const total = useSelector(selectTotal);
-  const [subtotal, setSubtotal] = useState(null);
+  const [disabled, setDisabled] = React.useState(false);
+  const total = useSelector((state) => state.cart.total);
   const dispatch = useDispatch();
   const { data: session } = useSession();
 
   const handleEmptyCart = () => {
     dispatch(emptyCart());
   };
-  useEffect(() => {
-    // Convert the total from your store's currency to euros
-    const convertToEuros = async () => {
-      try {
-        const totalInEuros = await convert(total, { from: "INR", to: "EUR" });
-        setSubtotal(totalInEuros);
-      } catch (error) {
-        console.error("Error converting currency:", error);
-      }
-    };
-    if (cartItems.length > 0) {
-      // Calculate the total in your store's currency
-      const total = cartItems.reduce(
-        (acc, item) => acc + item.price * item.quantity,
-        0
-      );
-      setSubtotal(total);
-      convertToEuros();
-    }
-  }, [cartItems]);
+
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
   return (
     <>
       <Header />
@@ -47,7 +37,7 @@ function CartPage() {
         <main className="max-w-screen-xl mx-auto">
           {cartItems.length ? (
             <div className="my-6 shadow rounded-md">
-              <div className="flex flex-col md:p-8  p-6  bg-white">
+              <div className="flex flex-col md:p-8 p-6  bg-white">
                 <h1 className="sm:text-2xl text-xl  font-semibold border-b-2 border-gray-200 pb-4 text-gray-700">
                   Shopping Cart
                 </h1>
@@ -98,24 +88,23 @@ function CartPage() {
               <h2 className="whitespace-nowrap font-semibold overflow-x-auto hideScrollBar">
                 Subtotal ({cartItems.length} items) :
                 <span className="font-bold text-red-500 mx-2">
-                  {subtotal && (
-                    <span>
-                      € <span className="font-bold">{subtotal.toFixed(2)}</span>
-                    </span>
-                  )}
+                  <span>€</span>
+                  <span className="font-bold">{subtotal.toFixed(2)}</span>
                 </span>
               </h2>
               {session ? (
                 <button
                   role="link"
-                  className={`button mt-6 flex items-center justify-center lg:text-lg text-base  py-2 ${
+                  className={`button mt-6 flex items-center justify-center lg:text-lg text-base py-2 ${
                     disabled ? "opacity-50" : ""
                   }`}
                   // onClick={!disabled ? createCheckoutSession : () => {}}
                   // disabled={disabled}
+                  // onClick={handleProceedToCheckout}
+                  // disabled={disabled}
                 >
                   <CreditCard className="sm:w-6 w-5" />
-                  <span className="ml-2">Proceed to checkout </span>
+                  <span className="ml-2">Proceed to checkout</span>
                 </button>
               ) : (
                 <button
