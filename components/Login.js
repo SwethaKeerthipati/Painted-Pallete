@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -86,9 +87,9 @@ const LoginForm = () => {
       </div>
       <p className="mt-4">
         New here?{" "}
-        <a href="/signup" className="text-blue-500 hover:underline">
+        <Link href="/signup" className="text-blue-500 hover:underline">
           Sign up
-        </a>
+        </Link>
       </p>
       <ToastContainer
         position="top-right"
