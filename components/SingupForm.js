@@ -58,7 +58,7 @@ export default function Register() {
           >
             <input
               type="text"
-              name="Username"
+              name="username"
               placeholder="Username"
               className={styles.input_text}
               {...formik.getFieldProps("username")}

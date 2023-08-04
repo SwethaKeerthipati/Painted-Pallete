@@ -2,10 +2,11 @@ import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       required: [true, "Please provide a username"],
       unique: true,
+      minLength: 4,
     },
     email: {
       type: String,
@@ -40,3 +41,15 @@ const UserSchema = new mongoose.Schema(
 );
 
 export default mongoose.models.User || mongoose.model("User", UserSchema);
+
+// import { Schema, model, models } from "mongoose";
+
+// const userSchema = new Schema({
+//   username: String,
+//   email: String,
+//   password: String,
+// });
+
+// const Users = models.users || model("users", userSchema);
+
+// export default Users;
