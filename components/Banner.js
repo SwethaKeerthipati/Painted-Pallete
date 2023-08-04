@@ -1,16 +1,9 @@
 import React from "react";
 import BannerImg from "../public/products/art-artist.gif";
-// import Link from "next/link";
-// import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-
 import Image from "next/image";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Banner = () => {
-  // const router = useRouter();
-  // const scrollHandler = () => {
-  //   router.push("/product-feed");
-  // };
   return (
     <div className="py-10 md:py-20 relative bg-gradient-to-r from-blue-100 to-indigo-900">
       <div className="flex flex-col-reverse items-center md:flex-row md:items-center max-w-screen-xl mx-auto px-4">
@@ -32,13 +25,12 @@ const Banner = () => {
             <div className="uppercase text-sm font-medium border-2 border-white py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
               Read More
             </div>
-            {/* <div className="uppercase text-sm font-medium bg-white text-black py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
-              Shop Now
-            </div> */}
-            <button className=" uppercase text-sm font-medium bg-white text-black py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
-              <div className="mr-2 xl:w-6 w-5" />
-              Shop Now
-            </button>
+            <Link href="/products">
+              <button className=" uppercase text-sm font-medium bg-white text-black py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
+                <div className="mr-2 xl:w-6 w-5" />
+                Shop Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

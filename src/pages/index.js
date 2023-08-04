@@ -56,11 +56,20 @@ export default function Home({ addItemToCart }) {
     <div>
       <Header onSearchChange={handleSearchChange} />
       <Banner />
-      <Categories
-        categoryName={["All", "Nature", "Mandala", "Cute", "Pencil", "Random"]}
-        matchedCategory={matchedCategory}
-        setMatchedCategory={setMatchedCategory}
-      />
+      <div className="mt-8">
+        <Categories
+          categoryName={[
+            "All",
+            "Nature",
+            "Mandala",
+            "Cute",
+            "Pencil",
+            "Random",
+          ]}
+          matchedCategory={matchedCategory}
+          setMatchedCategory={setMatchedCategory}
+        />
+      </div>
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4">
           {productInfo ? (
@@ -94,8 +103,12 @@ export default function Home({ addItemToCart }) {
             <p className="text-xs text-gray-500 text-center py-4">Loading...</p>
           )}
         </div>
-        <Newsletter />
-        <Footer />
+        <div className="mt-8">
+          <Newsletter />
+        </div>
+        <div className="mt-8">
+          <Footer />
+        </div>
       </div>
     </div>
   );

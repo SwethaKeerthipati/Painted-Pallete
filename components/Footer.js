@@ -110,7 +110,7 @@ const Footer = () => {
                   Terms & Conditions
                 </div>
               </Link>
-              <Link href="/contact-us">
+              <Link href="/contact">
                 <div className="text-sm text-gray-600 hover:text-purple-600">
                   Contact Us
                 </div>

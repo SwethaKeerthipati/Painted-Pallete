@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
@@ -16,6 +16,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
+  const { data: session } = useSession();
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -37,19 +38,6 @@ const LoginForm = () => {
     if (status.ok) router.push(status.url);
   }
 
-  // const handleLocalLogin = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await signIn("email", { email, password });
-  //     console.log("Login Response:", response);
-  //     toast.success("Login successful!"); // Show success toast
-  //   } catch (error) {
-  //     console.error("Login Error:", error);
-  //     toast.error("Invalid email, username, or password."); // Show error toast
-  //   }
-  //   // signIn("email", { email, password });
-  // };
-
   const handleGoogleLogin = () => {
     signIn("google");
   };
@@ -67,7 +55,9 @@ const LoginForm = () => {
         <div className="title">
           <h1 className="text-gray-800 text-xl font-bold py-2">Explore</h1>
           <p className="w-3/4 mx-auto text-black">
-            Welcome Back and Login to Explore Arts!
+            {session
+              ? `Welcome Back, ${session.user.name}!`
+              : "Welcome Back and Login to Explore Arts!"}
           </p>
         </div>
         {/* form */}

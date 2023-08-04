@@ -29,6 +29,7 @@ function ProductDetails({ title, price, description, category, image }) {
 
   const handleBuyNow = () => {
     const product = {
+      id: uniqueId,
       title,
       description,
       price,

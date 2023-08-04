@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import Link from "next/link";
 
 const Newsletter = () => {
   return (
@@ -28,15 +29,33 @@ const Newsletter = () => {
           Will be used in accordance with our Privacy Policy
         </span>
         <div className="social-icons flex gap-4 justify-center md:justify-center text-white">
-          <div className="icon w-8 h-8 flex items-center justify-center bg-black rounded-full">
-            <FaLinkedinIn size={14} />
-          </div>
-          <div className="icon w-8 h-8 flex items-center justify-center bg-black rounded-full">
-            <FaTwitter size={14} />
-          </div>
-          <div className="icon w-8 h-8 flex items-center justify-center bg-black rounded-full">
-            <FaInstagram size={14} />
-          </div>
+          <Link
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="icon w-8 h-8 flex items-center justify-center bg-black rounded-full">
+              <FaLinkedinIn size={14} />
+            </div>
+          </Link>
+          <Link
+            href="https://twitter.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="icon w-8 h-8 flex items-center justify-center bg-black rounded-full">
+              <FaTwitter size={14} />
+            </div>
+          </Link>
+          <Link
+            href="https://www.instagram.com/swethakeerthipati"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="icon w-8 h-8 flex items-center justify-center bg-black rounded-full">
+              <FaInstagram size={14} />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

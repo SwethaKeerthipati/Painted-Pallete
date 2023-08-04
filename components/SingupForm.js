@@ -31,7 +31,7 @@ export default function Register() {
     await fetch("http://localhost:3000/api/auth/signup", options)
       .then((res) => res.json())
       .then((data) => {
-        if (data) router.push("/");
+        if (data) router.push("/login");
       });
   }
 

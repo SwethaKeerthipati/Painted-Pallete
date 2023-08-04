@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import Select from "react-select";
 import Image from "next/image";
 import Header from "../../components/Header";
+import { getSession } from "next-auth/react";
 
 const Profile = () => {
   const { data: session } = useSession();
@@ -106,3 +107,21 @@ const Profile = () => {
 };
 
 export default Profile;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context); // Retrieve the user's session data
+
+  if (!session?.user) {
+    // If the user is not logged in, redirect to login page
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}
