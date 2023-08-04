@@ -3,23 +3,52 @@ import { signIn } from "next-auth/react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import Head from "next/head";
+import Layout from "./Layout";
+import styles from "../src/styles/Form.module.css";
+import Image from "next/image";
+import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
+import { useFormik } from "formik";
+import login_validate from "../lib/validate";
+import { useRouter } from "next/router";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+  const router = useRouter();
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validate: login_validate,
+    onSubmit,
+  });
+  console.log(formik.errors);
+  async function onSubmit(values) {
+    const status = await signIn("credentials", {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+      callbackUrl: "/",
+    });
+    console.log(status);
+    if (status.ok) router.push(status.url);
+  }
 
-  const handleLocalLogin = async (e) => {
-    e.preventDefault();
-    try {
-      await signIn("email", { email, password });
-      console.log("Login Response:", response);
-      toast.success("Login successful!"); // Show success toast
-    } catch (error) {
-      console.error("Login Error:", error);
-      toast.error("Invalid email, username, or password."); // Show error toast
-    }
-    // signIn("email", { email, password });
-  };
+  // const handleLocalLogin = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await signIn("email", { email, password });
+  //     console.log("Login Response:", response);
+  //     toast.success("Login successful!"); // Show success toast
+  //   } catch (error) {
+  //     console.error("Login Error:", error);
+  //     toast.error("Invalid email, username, or password."); // Show error toast
+  //   }
+  //   // signIn("email", { email, password });
+  // };
 
   const handleGoogleLogin = () => {
     signIn("google");
@@ -30,73 +59,126 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-2xl font-bold mb-4">Login</h1>
-      <form onSubmit={handleLocalLogin} className="w-full max-w-sm">
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-          />
+    <Layout>
+      <Head>
+        <title>Login</title>
+      </Head>
+      <section className="w-3/4 mx-auto flex flex-col gap-2">
+        <div className="title">
+          <h1 className="text-gray-800 text-xl font-bold py-2">Explore</h1>
+          <p className="w-3/4 mx-auto text-black">
+            Welcome Back and Login to Explore Arts!
+          </p>
         </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700 mb-2">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-          />
-        </div>
-        <div className="mb-4">
-          <a href="/forgot-password" className="text-blue-500 hover:underline">
-            Forgot Password?
-          </a>
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
-        >
-          Sign in
-        </button>
-      </form>
-      <div className="mt-4">
-        <button
-          onClick={handleGoogleLogin}
-          className="bg-red-500 text-white py-2 px-4 rounded-lg mr-2"
-        >
-          Login with Google
-        </button>
-        <button
-          onClick={handleGithubLogin}
-          className="bg-black text-white py-2 px-4 rounded-lg"
-        >
-          Login with GitHub
-        </button>
-      </div>
-      <p className="mt-4">
-        New here?{" "}
-        <Link href="/signup" className="text-blue-500 hover:underline">
-          Sign up
-        </Link>
-      </p>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={true}
-      />
-    </div>
+        {/* form */}
+        <form className="flex flex-col gap-4" onSubmit={formik.handleSubmit}>
+          <div
+            className={`${styles.input_group} ${
+              formik.errors.email && formik.touched.email
+                ? "border-rose-600"
+                : ""
+            }`}
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="email"
+              className={styles.input_text}
+              //   onChange={formik.handleChange}
+              //   value={formik.values.email}
+              {...formik.getFieldProps("email")}
+            />
+            <span className="icon flex items-center px-1">
+              <HiAtSymbol size={15} />
+            </span>
+          </div>
+          <div
+            className={`${styles.input_group} ${
+              formik.errors.password && formik.touched.password
+                ? "border-rose-600"
+                : ""
+            }`}
+          >
+            <input
+              type={`${show ? "text" : "password"}`}
+              name="password"
+              placeholder="password"
+              className={styles.input_text}
+              //   onChange={formik.handleChange}
+              //   value={formik.values.password}
+              {...formik.getFieldProps("password")}
+            />
+            <span
+              className="icon flex items-center px-1"
+              onClick={() => setShow(!show)}
+            >
+              <HiFingerPrint size={15} />
+            </span>
+          </div>
+
+          {/* <div className="mb-4">
+            <a
+              href="/forgot-password"
+              className="text-blue-500 hover:underline"
+            >
+              Forgot Password?
+            </a>
+          </div> */}
+
+          {/* login buttons */}
+          <div className="input-button">
+            <button type="submit" className={styles.button}>
+              Login
+            </button>
+          </div>
+          <div className="input_button">
+            <div className={styles.button_container}>
+              <button
+                type="button"
+                onClick={handleGoogleLogin}
+                // className="bg-red-500 text-white py-2 px-4 rounded-lg mr-2"
+                className={styles.button_custom}
+              >
+                Sign In with Google
+                <Image
+                  src={"/products/google.svg"}
+                  alt="google"
+                  width="20"
+                  height={20}
+                ></Image>
+              </button>
+            </div>
+
+            <div className={styles.button_container}>
+              <button
+                onClick={handleGithubLogin}
+                className={styles.button_custom}
+                // className="bg-black text-white py-2 px-4 rounded-lg"
+              >
+                Sign In with GitHub
+                <Image
+                  src={"/products/github.svg"}
+                  alt="github"
+                  width="20"
+                  height={20}
+                ></Image>
+              </button>
+            </div>
+          </div>
+        </form>
+        <p className="text-center text-gray-400 ">
+          Not a Member Yet?{" "}
+          <Link href={"/register"} legacyBehavior>
+            <a className="text-blue-700">Sign Up</a>
+          </Link>
+        </p>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={true}
+        />
+      </section>
+    </Layout>
   );
 };
 
