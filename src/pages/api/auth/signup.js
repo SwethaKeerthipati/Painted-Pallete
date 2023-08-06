@@ -13,7 +13,8 @@ export default async function handler(req, res) {
 
       const { username, email, password } = req.body;
       console.log("username, email, password", username, email, password);
-      const checkexisting = await User.findOne({ email });
+      var query = { email: email };
+      const checkexisting = await User.findOne(query);
       if (checkexisting) {
         return res.status(422).json({ message: "User Already Exists...!" });
       }
