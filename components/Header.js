@@ -91,7 +91,7 @@ export default function Header({ onSearchChange }) {
                     <KeyboardArrowDownIcon />
                   </button>
                   {showDropdown && (
-                    <div className="dropdown-content">
+                    <div className="dropdown-content border-b border-gray-200">
                       <button onClick={() => router.push("/profile")}>
                         Profile
                       </button>

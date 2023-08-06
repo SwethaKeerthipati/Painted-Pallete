@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 import Banner from "../../components/Banner";
 import Newsletter from "../../components/NewsLetter";
 import Categories from "../../components/Categories";
+import { useEffect } from "react";
 
 export default function Home({ addItemToCart }) {
   const [search, setSearch] = useState("");

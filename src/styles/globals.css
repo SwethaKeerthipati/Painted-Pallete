@@ -100,7 +100,7 @@
   background-color: #f1f1f1;
 }
 
-@media only screen and (max-width: 780px) {
+/* @media only screen and (max-width: 780px) {
   .loader svg {
     width: 120px;
     height: 120px;
@@ -112,4 +112,4 @@
     min-height: calc(100vh - 200px);
     height: 100%;
   }
-}
+} */

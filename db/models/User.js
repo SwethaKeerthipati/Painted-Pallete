@@ -26,30 +26,32 @@ const UserSchema = new mongoose.Schema(
     forgotPasswordToken: String,
     forgotPasswordTokenExpiry: Date,
     verifiedToken: String,
-    // resetPasswordToken: String,
-    // resetPasswordExpire: Date,
-
-    // shippingAddresses: [
-    //   {
-    //     street: { type: String, required: true },
-    //     city: { type: String, required: true },
-    //     postcode: { type: String, required: true },
-    //   },
-    // ],
+    cart: [
+      {
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
+        },
+        quantity: Number,
+      },
+    ],
+    orders: [
+      {
+        products: [
+          {
+            product: {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: "Product",
+            },
+            quantity: Number,
+          },
+        ],
+        total: Number,
+        createdAt: { type: Date, default: Date.now },
+      },
+    ],
   },
   { timestamps: true }
 );
 
 export default mongoose.models.User || mongoose.model("User", UserSchema);
-
-// import { Schema, model, models } from "mongoose";
-
-// const userSchema = new Schema({
-//   username: String,
-//   email: String,
-//   password: String,
-// });
-
-// const Users = models.users || model("users", userSchema);
-
-// export default Users;

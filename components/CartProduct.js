@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFromCart, updateQuantity } from "../slices/cartSlice";
+import { addToCart, removeFromCart, updateQuantity } from "../slices/cartSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { Remove } from "@mui/icons-material";
@@ -21,7 +21,19 @@ function CartProduct({
   const dispatch = useDispatch();
   const router = useRouter();
   const total = price * quantity;
-
+  const addItemToCart = () => {
+    dispatch(
+      addToCart({
+        id,
+        title,
+        price,
+        image,
+        quantity: 1,
+        category,
+        description,
+      })
+    );
+  };
   const removeItemFromCart = () => dispatch(removeFromCart({ id }));
   const incQty = () =>
     dispatch(

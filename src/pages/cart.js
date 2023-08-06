@@ -5,14 +5,7 @@ import Header from "../../components/Header";
 import { signIn, useSession } from "next-auth/react";
 import { CreditCard } from "@mui/icons-material";
 import Image from "next/image";
-import cartReducer, { emptyCart } from "../../slices/cartSlice";
-
-// import { useEffect } from "react";
-// import { loadStripe } from "@stripe/stripe-js";s
-
-// const stripePromise = loadStripe(
-//   "pk_test_51Naeu3Eh0kcTfsxt2DPKCe4dhqczfjlziZJRd5hfcwkDFB08i1uB3lDde1W7zX6TWqFhJi7WrhVbCzAX5uzXDjIM006MFbU4aF"
-// );
+import { emptyCart } from "../../slices/cartSlice";
 
 function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems);

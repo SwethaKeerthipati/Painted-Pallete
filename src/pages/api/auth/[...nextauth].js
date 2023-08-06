@@ -59,8 +59,9 @@ export const authOptions = {
     collection: "users", // Specify the name of the collection where user documents will be stored
   }),
   callbacks: {
-    async session({ session, user }) {
+    async session({ session, token, user }) {
       session.user._id = user.id;
+      session.accessToken = token.accessToken;
       return session;
     },
   },
