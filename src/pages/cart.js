@@ -8,7 +8,7 @@ import Image from "next/image";
 import { emptyCart } from "../../slices/cartSlice";
 import { useRouter } from "next/router";
 import axios from "axios";
-import stripePromise from "./stripe";
+import stripePromise from "../../utils/stripe";
 
 function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems);
