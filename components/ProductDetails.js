@@ -57,6 +57,7 @@ function ProductDetails({ title, price, description, category, image }) {
                   width={400}
                   height={400}
                   objectFit="contain"
+                  className="border-ridge rounded-2xl"
                 />
               </div>
             )}
@@ -77,20 +78,20 @@ function ProductDetails({ title, price, description, category, image }) {
                   <p className="text-2xl font-semibold text-gray-700">
                     €{price}
                   </p>
-                  <div className="mt-10 flex xs:flex-row sm:gap-8 gap-6">
+                  <div className="mt-10 flex xs:flex-row sm:gap-8 gap-6 ">
                     <button
-                      className="bg-blue-400 px-10  py-2 flex items-center justify-center"
+                      className="bg-blue-400 px-10  py-2 flex items-center justify-center rounded-xl"
                       onClick={handleAddToCart}
                     >
                       <ShoppingCartIcon className="w-4" />
                       <span className="ml-2">Add to Cart</span>
                     </button>
                     <button
-                      className=" bg-green-500 px-10 py-2 flex items-center justify-center"
+                      className=" bg-green-500 px-10 py-2 flex items-center justify-center rounded-xl  "
                       onClick={handleBuyNow}
                     >
                       <Bolt className="w-4" />
-                      <span className="ml-2">Buy Now</span>
+                      <span className="ml-2 ">Buy Now</span>
                     </button>
                   </div>
                 </>

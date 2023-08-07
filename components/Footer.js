@@ -119,7 +119,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-gray-200 border-t border-gray-300 py-4 px-4 md:px-0 text-sm text-gray-600 text-center">
+      <div className="bg-gray-200 border-t border-gray-900 py-4 px-4 md:px-0 text-sm text-black text-center">
         &copy; Painted Palette {currentYear}. All rights reserved.
       </div>
     </div>

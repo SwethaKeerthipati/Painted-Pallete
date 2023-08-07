@@ -6,6 +6,9 @@ import { signIn, useSession } from "next-auth/react";
 import { CreditCard } from "@mui/icons-material";
 import Image from "next/image";
 import { emptyCart } from "../../slices/cartSlice";
+import { useRouter } from "next/router";
+import axios from "axios";
+import stripePromise from "./stripe";
 
 function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -13,6 +16,7 @@ function CartPage() {
   const total = useSelector((state) => state.cart.total);
   const dispatch = useDispatch();
   const { data: session } = useSession();
+  const router = useRouter();
 
   const handleEmptyCart = () => {
     dispatch(emptyCart());
@@ -22,6 +26,36 @@ function CartPage() {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
+  const handleCheckout = async (quantity) => {
+    // Get the Stripe instance from stripePromise
+    const stripe = await stripePromise;
+    console.log("Request data:", {
+      items: [
+        {
+          price: "price_1NcQVxEh0kcTfsxtlEWRa7wG", // Replace with the actual Price ID of your product
+          quantity: quantity,
+        },
+      ],
+    });
+    // Create a Checkout Session with your product details
+    const response = await axios.post("/api/checkout_sessions", {
+      items: [
+        {
+          price: "price_1NcQVxEh0kcTfsxtlEWRa7wG", // Replace with the actual Price ID of your product
+          quantity: quantity,
+        },
+      ],
+    });
+
+    // Redirect to the Stripe Checkout page
+    const result = await stripe.redirectToCheckout({
+      sessionId: response.data.id,
+    }); // If the redirect fails, show an error to the user
+    if (result.error) {
+      console.error(result.error.message);
+    }
+  };
 
   return (
     <>
@@ -42,7 +76,7 @@ function CartPage() {
                     </span>
                   </span>
                   <button
-                    className={`bg-red-300 py-2 px-8 xs:px-10 ${
+                    className={`bg-red-500 py-2 px-8 xs:px-10 text-white rounded-2xl ${
                       disabled ? "opacity-50" : ""
                     }`}
                     onClick={handleEmptyCart}
@@ -56,6 +90,7 @@ function CartPage() {
                     key={item.id}
                     {...item}
                     border={i !== cartItems?.length - 1}
+                    quantity={item.quantity}
                   />
                 ))}
               </div>
@@ -80,7 +115,7 @@ function CartPage() {
             <div className="flex flex-col bg-white md:p-10  py-8 px-6 shadow-md rounded-md md:text-xl sm:text-lg text-base my-10">
               <h2 className="whitespace-nowrap font-semibold overflow-x-auto hideScrollBar">
                 Subtotal ({cartItems.length} items) :
-                <span className="font-bold text-red-500 mx-2">
+                <span className="font-bold text-green-700 mx-2">
                   <span>€</span>
                   <span className="font-bold">{subtotal.toFixed(2)}</span>
                 </span>
@@ -95,6 +130,10 @@ function CartPage() {
                   // disabled={disabled}
                   // onClick={handleProceedToCheckout}
                   // disabled={disabled}
+                  // onClick={handleCheckout}
+                  // disabled={disabled}
+                  onClick={() => handleCheckout(cartItems.length)}
+                  disabled={disabled}
                 >
                   <CreditCard className="sm:w-6 w-5" />
                   <span className="ml-2">Proceed to checkout</span>
@@ -102,7 +141,7 @@ function CartPage() {
               ) : (
                 <button
                   role="link"
-                  className="button mt-6 lg:text-lg text-base py-2"
+                  className="button mt-6 lg:text-lg text-base py-2 text-white rounded-2xl"
                   onClick={signIn}
                 >
                   Sign in to checkout

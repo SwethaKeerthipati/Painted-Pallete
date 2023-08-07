@@ -1,4 +1,5 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -38,11 +39,47 @@ const cartSlice = createSlice({
   },
 });
 
+// // API calls
+
+// export const addToCartAsync = (item) => async (dispatch) => {
+//   try {
+//     const response = await axios.post("/api/cart", { productId: item.id });
+//     dispatch(cartSlice.actions.addToCart(response.data));
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+
+// export const updateCartItemQuantityAsync =
+//   (itemId, quantity) => async (dispatch) => {
+//     try {
+//       const response = await axios.put("/api/cart", {
+//         productId: itemId,
+//         quantity,
+//       });
+//       dispatch(cartSlice.actions.updateQuantity(response.data));
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+// export const removeFromCartAsync = (itemId) => async (dispatch) => {
+//   try {
+//     await axios.delete("/api/cart", { data: { productId: itemId } });
+//     dispatch(cartSlice.actions.removeFromCart({ id: itemId }));
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+
+// Selectors
+
 export const selectTotal = createSelector(
   (state) => state.cart.cartItems,
   (cartItems) =>
     cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
 );
+
 export const { addToCart, removeFromCart, updateQuantity, emptyCart } =
   cartSlice.actions;
 

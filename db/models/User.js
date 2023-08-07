@@ -26,30 +26,30 @@ const UserSchema = new mongoose.Schema(
     forgotPasswordToken: String,
     forgotPasswordTokenExpiry: Date,
     verifiedToken: String,
-    cart: [
-      {
-        product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Product",
-        },
-        quantity: Number,
-      },
-    ],
-    orders: [
-      {
-        products: [
-          {
-            product: {
-              type: mongoose.Schema.Types.ObjectId,
-              ref: "Product",
-            },
-            quantity: Number,
-          },
-        ],
-        total: Number,
-        createdAt: { type: Date, default: Date.now },
-      },
-    ],
+    // cart: [
+    //   {
+    //     product: {
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: "Product",
+    //     },
+    //     quantity: Number,
+    //   },
+    // ],
+    // orders: [
+    //   {
+    //     products: [
+    //       {
+    //         product: {
+    //           type: mongoose.Schema.Types.ObjectId,
+    //           ref: "Product",
+    //         },
+    //         quantity: Number,
+    //       },
+    //     ],
+    //     total: Number,
+    //     createdAt: { type: Date, default: Date.now },
+    //   },
+    // ],
   },
   { timestamps: true }
 );

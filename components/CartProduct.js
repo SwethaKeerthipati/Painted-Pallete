@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Remove } from "@mui/icons-material";
 import { Add } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 function CartProduct({
   id,
@@ -72,6 +73,7 @@ function CartProduct({
         });
       }
     };
+
   return (
     <div
       className={`block bg-white py-6 sm:grid sm:grid-cols-5 ${
@@ -111,7 +113,7 @@ function CartProduct({
               onClick={decQty}
               disabled={disabled}
             >
-              <Remove className="h-5" />
+              <Remove className="h-5 rounded-2xl text-white" />
             </button>
             <div className="p-2 whitespace-normal sm:p-1 sm:whitespace-nowrap">
               <span className="font-bold md:text-base text-sm text-gray-700">
@@ -123,11 +125,11 @@ function CartProduct({
               onClick={incQty}
               disabled={disabled}
             >
-              <Add className="h-5" />
+              <Add className="h-5 rounded-2xl text-white" />
             </button>
           </div>
           <button
-            className={`button py-2  lg:px-10 md:px-8 px-6 ${
+            className={`button py-2  lg:px-10 md:px-8 px-6 rounded-2xl text-white ${
               disabled ? "opacity-50" : ""
             }`}
             onClick={removeItemFromCart}

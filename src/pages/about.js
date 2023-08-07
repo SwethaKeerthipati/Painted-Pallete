@@ -55,8 +55,8 @@ const AboutPage = () => {
               className="rounded-lg shadow-md"
             />
           </div>
-          <div className="flex items-center">
-            <div className="p-8 bg-white rounded-lg shadow-md w-full h-full italic text-center bg-green-100">
+          <div className="flex items-center ">
+            <div className="flex flex-col justify-center p-8 bg-white rounded-lg shadow-md w-full h-full italic text-center bg-green-100">
               <h2 className="text-2xl font-bold mb-4">
                 Thank you for Visiting!
               </h2>

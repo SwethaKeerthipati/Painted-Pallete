@@ -11,7 +11,7 @@ export default function Product({ _id, title, price, description, image }) {
         width={200}
         alt=""
         objectFit="contain"
-        className="cursor-pointer w-80 h-60 object-cover rounded-xl"
+        className="cursor-pointer w-80 h-60 object-cover rounded-lg "
       />
 
       <div className="mt-2">
