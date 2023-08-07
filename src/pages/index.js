@@ -85,6 +85,7 @@ export default function Home({ addItemToCart }) {
                       onClick={addItemToCart}
                       id={product._id}
                       title={product.title}
+                      price_id={product.price_id}
                       price={product.price}
                       description={product.description}
                       category={product.category}

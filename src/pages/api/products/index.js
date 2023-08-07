@@ -9,7 +9,17 @@ export default async function handler(request, response) {
   } else if (request.method === "POST") {
     try {
       const productData = request.body;
-      const product = new Product(productData);
+      // const product = new Product(productData);
+      const { title, image, price, category, description, price_id } =
+        productData;
+      const product = new Product({
+        title,
+        image,
+        price,
+        category,
+        description,
+        price_id, // Save the Stripe Price ID to the database
+      });
       await product.save();
       response.status(201).json({ status: "Product created" });
     } catch (error) {

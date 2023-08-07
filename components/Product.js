@@ -2,7 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-export default function Product({ _id, title, price, description, image }) {
+export default function Product({
+  _id,
+  title,
+  price,
+  price_id,
+  description,
+  image,
+}) {
   return (
     <div className="relative flex flex-col bg-white z-20 md:p-8 p-6 rounded-md shadow-lg">
       <Image

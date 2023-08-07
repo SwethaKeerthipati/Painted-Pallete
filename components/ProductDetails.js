@@ -9,7 +9,14 @@ import Header from "./Header";
 import { generateUniqueId } from "../utils/uuid";
 import addedToCartToast from "../utils/Toast/addedToCart";
 
-function ProductDetails({ title, price, description, category, image }) {
+function ProductDetails({
+  title,
+  price,
+  price_id,
+  description,
+  category,
+  image,
+}) {
   const router = useRouter();
   const uniqueId = generateUniqueId();
   const dispatch = useDispatch();
@@ -19,6 +26,7 @@ function ProductDetails({ title, price, description, category, image }) {
       title,
       description,
       price,
+      price_id,
       image,
       quantity: 1,
       toast: true,
@@ -33,6 +41,7 @@ function ProductDetails({ title, price, description, category, image }) {
       title,
       description,
       price,
+      price_id,
       image,
       quantity: 1,
       toast: false,

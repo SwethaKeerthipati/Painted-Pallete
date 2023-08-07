@@ -5,21 +5,51 @@ import Header from "../../components/Header";
 import { signIn, useSession } from "next-auth/react";
 import { CreditCard } from "@mui/icons-material";
 import Image from "next/image";
-import { emptyCart } from "../../slices/cartSlice";
+import {
+  emptyCart,
+  selectTotal,
+  loadCartItemsFromStorage,
+} from "../../slices/cartSlice";
 import { useRouter } from "next/router";
 import axios from "axios";
 import stripePromise from "../../utils/stripe";
+import { useEffect } from "react";
 
 function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const [disabled, setDisabled] = React.useState(false);
-  const total = useSelector((state) => state.cart.total);
+  // const total = useSelector((state) => state.cart.total);
+  const total = useSelector(selectTotal);
   const dispatch = useDispatch();
   const { data: session } = useSession();
   const router = useRouter();
-
+  useEffect(() => {
+    // Load cart items from local storage when the component mounts
+    dispatch(loadCartItemsFromStorage());
+  }, [dispatch]);
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        const response = await axios.get("/api/products");
+        const products = response.data;
+        // Update cartItems with the product details, including the Price IDs
+        const updatedCartItems = cartItems.map((item) => {
+          const product = products.find((p) => p._id === item.id);
+          return {
+            ...item,
+            ...product,
+          };
+        });
+        dispatch(loadCartItemsFromStorage(updatedCartItems));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchProductDetails();
+  }, [cartItems, dispatch]);
   const handleEmptyCart = () => {
     dispatch(emptyCart());
+    localStorage.removeItem("cartItems");
   };
 
   const subtotal = cartItems.reduce(
@@ -30,22 +60,20 @@ function CartPage() {
   const handleCheckout = async (quantity) => {
     // Get the Stripe instance from stripePromise
     const stripe = await stripePromise;
-    console.log("Request data:", {
-      items: [
-        {
-          price: "price_1NcQVxEh0kcTfsxtlEWRa7wG", // Replace with the actual Price ID of your product
-          quantity: quantity,
-        },
-      ],
-    });
     // Create a Checkout Session with your product details
     const response = await axios.post("/api/checkout_sessions", {
-      items: [
-        {
-          price: "price_1NcQVxEh0kcTfsxtlEWRa7wG", // Replace with the actual Price ID of your product
-          quantity: quantity,
-        },
-      ],
+      //   items: [
+      //     {
+      //       price: "price_1NcQVxEh0kcTfsxtlEWRa7wG", // Replace with the actual Price ID of your product
+      //       quantity: quantity,
+      //     },
+      //   ],
+      // });
+      items: cartItems.map((item) => ({
+        // price: "price_1NcQVxEh0kcTfsxtlEWRa7wG", // Replace with the actual Price ID of your product
+        price: item.price_id,
+        quantity: item.quantity,
+      })),
     });
 
     // Redirect to the Stripe Checkout page
