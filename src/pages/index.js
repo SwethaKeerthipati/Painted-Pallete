@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 import Banner from "../../components/Banner";
 import Newsletter from "../../components/NewsLetter";
 import Categories from "../../components/Categories";
+import Image from "next/image";
 
 export default function Home({ addItemToCart }) {
   const [search, setSearch] = useState("");
@@ -98,7 +99,18 @@ export default function Home({ addItemToCart }) {
                 </div>
               ))
             ) : (
-              <p className="text-center text-lg">No Paintings found😒</p>
+              <div className="flex flex-col justify-center ml-10">
+                <p className="text-lg text-center py-2 italic text-red-500">
+                  No Paintings🎨 found
+                </p>
+                <Image
+                  src="/products/sad-cute.gif"
+                  alt="No results Found"
+                  width={500}
+                  height={500}
+                  objectFit="cover"
+                />
+              </div>
             )
           ) : (
             <p className="text-xs text-gray-500 text-center py-4">Loading...</p>
