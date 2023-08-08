@@ -38,22 +38,22 @@ const ContactUsPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-2xl font-bold mb-4">Contact Us</h1>
+    <div className="flex flex-col items-center justify-content h-screen max-h-100vh">
+      <h1 className="text-2xl font-bold mb-1">Contact Us</h1>
       {messageSent ? (
         <div>
           <p className="text-green-500">Thank you for contacting us!</p>
           {/* You can add a button to reset the form and go back to the form */}
           <button
             onClick={() => setMessageSent(false)}
-            className="mt-4 bg-blue-500 text-white py-4 px-4  hover:bg-blue-600"
+            className="mt-2 bg-blue-500 text-white py-2 px-2  hover:bg-blue-600"
           >
             Go back to the form
           </button>
         </div>
       ) : (
         <form ref={form} onSubmit={sendEmail} className="w-full max-w-sm">
-          <div className="mb-4">
+          <div className="mb-2">
             <label htmlFor="name" className="block text-gray-700 mb-2">
               Name
             </label>

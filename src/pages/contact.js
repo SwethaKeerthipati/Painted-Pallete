@@ -7,7 +7,7 @@ const ContactUs = () => {
       <Header />
 
       <div className="bg-gray-100 min-h-screen">
-        <div className="container mx-auto py-8">
+        <div className="container mx-auto py-5">
           <ContactUsPage />
         </div>
       </div>

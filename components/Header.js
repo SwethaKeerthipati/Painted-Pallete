@@ -26,6 +26,7 @@ export default function Header({ onSearchChange }) {
 
   const handleSignOut = () => {
     signOut();
+    router.push("/");
   };
 
   useEffect(() => {
@@ -77,21 +78,22 @@ export default function Header({ onSearchChange }) {
                 // User is logged in
                 <div className="user-dropdown" ref={dropdownRef}>
                   <button
-                    className="dropbtn"
+                    className="dropbtn capitalize "
                     onClick={() => setShowDropdown((prev) => !prev)}
                   >
-                    {session.user.name.split(" ")[0]}
+                    {/* {session.user.name.split(" ")[1]} */}
                     <Image
                       src={session.user.image}
                       alt="Profile"
-                      className="w-8 h-8 rounded-full ml-2"
+                      className="w-12 h-12 rounded-full ml-2"
+                      onClick={() => setShowDropdown((prev) => !prev)}
                       height={300}
                       width={300}
                     />
                     <KeyboardArrowDownIcon />
                   </button>
                   {showDropdown && (
-                    <div className="dropdown-content border-b border-gray-200">
+                    <div className="dropdown-content border-b border-gray-200 rounded-b-lg ">
                       <button onClick={() => router.push("/profile")}>
                         Profile
                       </button>

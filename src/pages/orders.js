@@ -19,7 +19,7 @@ const Orders = () => {
     <>
       <Header />
       <div className="orders-page">
-        <h1 className="text-2xl font-semibold mt-4 mb-2">Your Orders</h1>
+        <h1 className="text-xl font-semibold ml-5 mt-4 mb-2 ">Your Orders</h1>
         <hr className="mb-2 border-t-2 border-gray-300" />
         {!session ? (
           <div className="login-message flex flex-col items-center justify-center">

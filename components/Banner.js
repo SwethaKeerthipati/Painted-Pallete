@@ -4,6 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Banner = () => {
+  const scrollHandler = () => {
+    window.scrollTo({
+      top: document.getElementById("products-feed").offsetTop - 90,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="py-10 md:py-20 relative bg-gradient-to-r from-blue-100 to-indigo-900">
       <div className="flex flex-col-reverse items-center md:flex-row md:items-center max-w-screen-xl mx-auto px-4">
@@ -22,15 +28,18 @@ const Banner = () => {
             Art is the colors and textures of your imagination.
           </p>
           <div className="ctas flex justify-center md:justify-start gap-4">
-            <div className="uppercase text-sm font-medium border-2 border-white py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
-              Read More
-            </div>
-            <Link href="/products">
-              <button className=" uppercase text-sm font-medium bg-white text-black py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
-                <div className="mr-2 xl:w-6 w-5" />
-                Shop Now
-              </button>
+            <Link href="/about">
+              <div className="uppercase text-sm font-medium border-2 border-white py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
+                Read More
+              </div>
             </Link>
+
+            {/* <Link href="/categories"> */}
+            <button className=" uppercase text-sm font-medium bg-white text-black py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
+              <div className="mr-2 xl:w-6 w-5" />
+              Shop Now
+            </button>
+            {/* </Link> */}
           </div>
         </div>
       </div>

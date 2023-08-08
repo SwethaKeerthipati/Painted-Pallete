@@ -1,26 +1,27 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function OrdersPage() {
   const { data: session } = useSession();
-  const [orderCount, setOrderCount] = useState(null);
-
-  useEffect(() => {
-    const dummyOrderCount = 0;
-    setOrderCount(dummyOrderCount);
-  }, [session]);
 
   return (
     <div className="container">
       <div className="mt-4 orders-section">
         {!session ? (
           <p className="text-red-500">Please Login to check your orders.</p>
-        ) : orderCount === null ? (
-          <p className="text-red-500">Loading orders...</p>
-        ) : orderCount === 0 ? (
-          <p className="text-green-500 text-center">No orders found.</p>
         ) : (
-          <div>{/* Render the orders here */}</div>
+          <div className="text-center">
+            <div className="animated-image">
+              {/* <p className="text-red-500 mb-4"></p> */}
+              <Image
+                src="/products/wipr.jpg"
+                alt="In Progress"
+                width={300}
+                height={300}
+              />
+            </div>
+          </div>
         )}
       </div>
 
@@ -37,6 +38,23 @@ export default function OrdersPage() {
           border-bottom: 1px solid #ccc;
           padding-bottom: 20px;
           margin-bottom: 20px;
+        }
+        .animated-image {
+          animation: dance 2s infinite;
+        }
+
+        @keyframes dance {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          25%,
+          75% {
+            transform: translateY(-20px);
+          }
+          50% {
+            transform: translateY(0);
+          }
         }
       `}</style>
     </div>
