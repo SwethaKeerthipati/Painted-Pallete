@@ -3,8 +3,8 @@ import styles from "../src/styles/Layout.module.css";
 
 export default function Layout({ children }) {
   return (
-    <div className="flex h-screen">
-      <div className="m-auto bg-slate-50 rounded-md w-full h-2/4 grid lg:grid-cols-2">
+    <div className="flex w-3/4">
+      <div className="m-auto bg-slate-50 rounded-md w-full h-3/4 grid lg:grid-cols-2">
         <div className={styles.imgStyle}>
           <div className={styles.greetImg}></div>
         </div>

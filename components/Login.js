@@ -51,9 +51,8 @@ const LoginForm = () => {
       <Head>
         <title>Login</title>
       </Head>
-      <section className="w-3/4 mx-auto flex flex-col gap-2">
+      <section className="w-5/6 mx-auto flex flex-col gap-4">
         <div className="title">
-          <h1 className="text-gray-800 text-xl font-bold py-2">Explore</h1>
           <p className="w-3/4 mx-auto text-black">
             {session
               ? `Welcome Back, ${session.user.name}!`
@@ -113,7 +112,7 @@ const LoginForm = () => {
             >
               Forgot Password?
             </a>
-          </div> */}
+          </div> 
 
           {/* login buttons */}
           <div className="input-button">
