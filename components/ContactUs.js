@@ -43,7 +43,6 @@ const ContactUsPage = () => {
       {messageSent ? (
         <div>
           <p className="text-green-500">Thank you for contacting us!</p>
-          {/* You can add a button to reset the form and go back to the form */}
           <button
             onClick={() => setMessageSent(false)}
             className="mt-2 bg-blue-500 text-white py-2 px-2  hover:bg-blue-600"

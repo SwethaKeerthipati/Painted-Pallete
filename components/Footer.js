@@ -54,7 +54,7 @@ const Footer = () => {
                   onClick={handleEmailClick}
                   className="text-sm text-gray-600 hover:text-purple-600 underline"
                 >
-                  Email: swethakeerthipati@gmail.com
+                  swethakeerthipati@gmail.com
                 </div>
               </div>
             </div>
@@ -90,27 +90,27 @@ const Footer = () => {
                   Home
                 </div>
               </Link>
-              <Link href="/faq">
+              <Link href="/faq" target="_blank">
                 <div className="text-sm text-gray-600 hover:text-purple-600">
                   FAQ
                 </div>
               </Link>
-              <Link href="/privacyPolicy">
+              <Link href="/privacyPolicy" target="_blank">
                 <div className="text-sm text-gray-600 hover:text-purple-600">
                   Privacy Policy
                 </div>
               </Link>
-              <Link href="/returns">
+              <Link href="/returns" target="_blank">
                 <div className="text-sm text-gray-600 hover:text-purple-600">
                   Returns
                 </div>
               </Link>
-              <Link href="/termsofservice">
+              <Link href="/termsofservice" target="_blank">
                 <div className="text-sm text-gray-600 hover:text-purple-600">
                   Terms & Conditions
                 </div>
               </Link>
-              <Link href="/contact">
+              <Link href="/contact" target="_blank">
                 <div className="text-sm text-gray-600 hover:text-purple-600">
                   Contact Us
                 </div>

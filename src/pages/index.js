@@ -76,7 +76,7 @@ export default function Home({ addItemToCart }) {
           {productInfo ? (
             filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
-                <div key={product._id} className="px-5">
+                <div key={product._id} className="px-2">
                   <Link
                     href={`/products/${product._id}`}
                     key={product._id}

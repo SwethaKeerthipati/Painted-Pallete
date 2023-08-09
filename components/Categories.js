@@ -8,7 +8,7 @@ const Categories = ({ categoryName, matchedCategory, setMatchedCategory }) => {
   return (
     <div className="flex mb-5">
       {categoryName.map((category) => (
-        <div key={category} className="mr-6 p-2">
+        <div key={category} className="mr-6 ml-3 p-2">
           <h2
             className={`py-2 px-6 bg-white text-center rounded hover-bg-blue-900 hover:text-white transition-all cursor-pointer ease-in-out duration-200 shadow ${
               matchedCategory.toLowerCase() === category.toLowerCase()

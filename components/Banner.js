@@ -29,13 +29,13 @@ const Banner = () => {
           </p>
           <div className="ctas flex justify-center md:justify-start gap-4">
             <Link href="/about">
-              <div className="uppercase text-sm font-medium border-2 border-white py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
+              <div className="uppercase text-sm font-medium border-2 border-white py-2 px-6 transition-opacity cursor-pointer hover:opacity-60 rounded-lg">
                 Read More
               </div>
             </Link>
 
             {/* <Link href="/categories"> */}
-            <button className=" uppercase text-sm font-medium bg-white text-black py-2 px-6 transition-opacity cursor-pointer hover:opacity-60">
+            <button className=" uppercase text-sm font-medium bg-white text-black py-2 px-6 transition-opacity cursor-pointer hover:opacity-60 rounded-lg">
               <div className="mr-2 xl:w-6 w-5" />
               Shop Now
             </button>

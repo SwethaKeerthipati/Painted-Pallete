@@ -72,8 +72,8 @@ const AboutPage = () => {
 
         <div className="grid grid-cols-1 mt-12">
           <div className="flex justify-center">
-            <div className="p-6 bg-purple-100 rounded-lg shadow-md">
-              <p className="text-lg text-purple-600">
+            <div className="p-6 bg-pink-100 rounded-lg shadow-lg">
+              <p className="text-lg text-purple-600 italic">
                 If you find a piece that speaks to you, it would be an honor to
                 know that it found a special place in your home. Let us embark
                 on a journey of self-discovery together through the magical
@@ -85,8 +85,8 @@ const AboutPage = () => {
 
         <div className="grid grid-cols-1 mt-6">
           <div className="flex justify-center">
-            <div className="p-6 bg-pink-100 rounded-lg shadow-md">
-              <p className="text-lg text-pink-600">
+            <div className="p-6 bg-pink-100 rounded-lg shadow-lg">
+              <p className="text-lg text-purple-600 italic">
                 Here is to a future filled with color, creativity, and endless
                 possibilities. Let us create together and make this world a more
                 beautiful place, one brushstroke at a time.
@@ -96,7 +96,7 @@ const AboutPage = () => {
         </div>
       </main>
       <footer className="text-center p-4 bg-gray-300 text-sm">
-        &copy; Painted Palette {new Date().getFullYear()}
+        &copy; Painted Palette {new Date().getFullYear()}.
       </footer>
     </div>
   );
