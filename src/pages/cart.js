@@ -104,7 +104,7 @@ function CartPage() {
                     </span>
                   </span>
                   <button
-                    className={`bg-red-500 py-2 px-8 xs:px-10 text-white rounded-2xl ${
+                    className={`bg-red-500 py-2 px-8 xs:px-10 text-white rounded-xl ${
                       disabled ? "opacity-50" : ""
                     }`}
                     onClick={handleEmptyCart}
@@ -151,7 +151,7 @@ function CartPage() {
               {session ? (
                 <button
                   role="link"
-                  className={`button mt-6 flex items-center justify-center lg:text-lg text-base py-2 ${
+                  className={`button mt-6 flex items-center justify-center lg:text-lg text-base py-2 rounded-xl${
                     disabled ? "opacity-50" : ""
                   }`}
                   // onClick={!disabled ? createCheckoutSession : () => {}}
@@ -163,8 +163,8 @@ function CartPage() {
                   onClick={() => handleCheckout(cartItems.length)}
                   disabled={disabled}
                 >
-                  <CreditCard className="sm:w-6 w-5" />
-                  <span className="ml-2">Proceed to checkout</span>
+                  <CreditCard className="sm:w-6 w-5 text-white" />
+                  <span className="ml-2 text-white ">Proceed to checkout</span>
                 </button>
               ) : (
                 <button

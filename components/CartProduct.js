@@ -109,7 +109,9 @@ function CartProduct({
         <div className="flex flex-col space-y-4 my-auto  justify-self-end">
           <div className="flex justify-between">
             <button
-              className={`button sm:p-1 ${disabled ? "opacity-50" : ""}`}
+              className={`button sm:p-1 rounded-lg ${
+                disabled ? "opacity-50" : ""
+              }`}
               onClick={decQty}
               disabled={disabled}
             >
@@ -121,7 +123,9 @@ function CartProduct({
               </span>
             </div>
             <button
-              className={`button sm:p-1 ${disabled ? "opacity-50" : ""}`}
+              className={`button sm:p-1 rounded-lg ${
+                disabled ? "opacity-50" : ""
+              }`}
               onClick={incQty}
               disabled={disabled}
             >
@@ -129,7 +133,7 @@ function CartProduct({
             </button>
           </div>
           <button
-            className={`button py-2  lg:px-10 md:px-8 px-6 rounded-2xl text-white ${
+            className={`button py-2  lg:px-10 md:px-8 px-6 rounded-lg text-white ${
               disabled ? "opacity-50" : ""
             }`}
             onClick={removeItemFromCart}
