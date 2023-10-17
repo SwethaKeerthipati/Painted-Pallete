@@ -1,4 +1,3 @@
-// import NextAuth from "next-auth";
 import NextAuth, { AuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
@@ -13,7 +12,6 @@ import { compare } from "bcryptjs";
 dbConnect();
 
 export const authOptions = {
-  // ...
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -45,6 +43,7 @@ export const authOptions = {
           if (!checkPassword || result.email !== credentials.email) {
             throw new Error("Username or Password doesn't match");
           }
+          const secret = process.env.SECRET;
 
           return result;
         } catch (error) {
